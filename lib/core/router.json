@@ -1,0 +1,10 @@
+{
+    "last_updated": "Wed, 13 Oct 2021 14:00:13 GMT",
+    "routes": [
+        {
+            "file_path": "views/home_page/home_page_view.dart",
+            "route_name": "home_pageViewRoute",
+            "view_name": "HomePageView"
+        }
+    ]
+}
