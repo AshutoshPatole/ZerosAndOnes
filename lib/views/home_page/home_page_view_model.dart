@@ -6,6 +6,6 @@ class HomePageViewModel extends BaseViewModel {
   Logger log;
 
   HomePageViewModel() {
-    this.log = getLogger(this.runtimeType.toString());
+    log = getLogger(runtimeType.toString());
   }
 }
