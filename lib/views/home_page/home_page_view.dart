@@ -10,10 +10,10 @@ class HomePageView extends StatelessWidget {
     return ViewModelBuilder<HomePageViewModel>.reactive(
       builder: (BuildContext context, HomePageViewModel viewModel, Widget _) {
         return Scaffold(
-          appBar: AppBar(),
           body: const Center(
             child: Text('HomePage View'),
           ),
+          appBar: AppBar(),
         );
       },
       viewModelBuilder: () => HomePageViewModel(),
