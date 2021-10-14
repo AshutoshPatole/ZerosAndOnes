@@ -5,12 +5,12 @@ import 'package:stacked/stacked.dart';
 import 'login_page_view_model.dart';
 
 class LoginPageView extends StatelessWidget {
-  const LoginPageView({Key key}) : super(key: key);
+  const LoginPageView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginPageViewModel>.reactive(
-      builder: (BuildContext context, LoginPageViewModel viewModel, Widget _) {
+      builder: (BuildContext context, LoginPageViewModel viewModel, _) {
         return Scaffold(
           body: Center(
             child: Column(

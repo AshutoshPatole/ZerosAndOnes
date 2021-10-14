@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -10,19 +11,19 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocatorInjector.setUpLocator();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
-
+  MyApp({Key? key}) : super(key: key);
+  final User? user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: StackedService.navigatorKey,
       onGenerateRoute: router.Router.generateRoute,
-      initialRoute: loginPageViewRoute,
+      initialRoute: user != null ? homePageViewRoute : loginPageViewRoute,
     );
   }
 }

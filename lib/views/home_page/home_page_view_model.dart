@@ -3,9 +3,9 @@ import 'package:stacked/stacked.dart';
 import 'package:zerosandones/core/logger.dart';
 
 class HomePageViewModel extends BaseViewModel {
-  Logger log;
+  late Logger log;
 
   HomePageViewModel() {
-    log = getLogger(runtimeType.toString());
+    this.log = getLogger(this.runtimeType.toString());
   }
 }
