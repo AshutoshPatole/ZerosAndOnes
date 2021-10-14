@@ -11,7 +11,7 @@ class HomePageView extends StatelessWidget {
       builder: (BuildContext context, HomePageViewModel viewModel, Widget _) {
         return Scaffold(
           body: const Center(
-            child: Text('HomePage View'),
+            child: Text('Home View'),
           ),
           appBar: AppBar(),
         );
