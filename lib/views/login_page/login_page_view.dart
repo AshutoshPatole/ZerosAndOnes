@@ -27,7 +27,10 @@ class LoginPageView extends StatelessWidget {
                 SignInButton(
                   Buttons.FacebookNew,
                   padding: const EdgeInsets.all(12.0),
-                  onPressed: () {},
+                  onPressed: () {
+                    print("FB button clicked");
+                    viewModel.signInWithFacebook();
+                  },
                 ),
               ],
             ),
