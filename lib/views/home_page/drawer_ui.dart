@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zerosandones/core/constants/drawer_enum.dart';
 import 'package:zerosandones/theme/app_theme.dart';
 import 'package:zerosandones/views/home_page/home_page_view_model.dart';
 
@@ -31,40 +33,36 @@ class _HomeDrawerState extends State<HomeDrawer> {
   void setDrawerListArray() {
     drawerList = <DrawerList>[
       DrawerList(
-        index: DrawerIndex.HOME,
+        index: DrawerIndex.home,
         labelName: 'Home',
-        icon: Icon(Icons.home),
+        icon: const Icon(CupertinoIcons.home),
       ),
       DrawerList(
-          index: DrawerIndex.Help,
-          labelName: 'Help',
-          isAssetsImage: true,
-          icon: Icon(Icons.question_answer)),
-      DrawerList(
-        index: DrawerIndex.FeedBack,
+        index: DrawerIndex.feedback,
         labelName: 'FeedBack',
-        icon: Icon(Icons.help),
+        icon: const Icon(CupertinoIcons.chat_bubble_text),
       ),
       DrawerList(
-        index: DrawerIndex.Invite,
+        index: DrawerIndex.invite,
         labelName: 'Invite Friend',
-        icon: Icon(Icons.group),
+        icon: const Icon(CupertinoIcons.group),
       ),
       DrawerList(
-        index: DrawerIndex.Share,
+        index: DrawerIndex.share,
         labelName: 'Rate the app',
-        icon: Icon(Icons.share),
+        icon: const Icon(CupertinoIcons.heart),
       ),
       DrawerList(
-        index: DrawerIndex.About,
+        index: DrawerIndex.about,
         labelName: 'About Us',
-        icon: Icon(Icons.info),
+        icon: const Icon(CupertinoIcons.info),
       ),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppTheme.notWhite.withOpacity(0.5),
       body: Column(
@@ -95,8 +93,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                                   .value /
                               360),
                           child: Container(
-                            height: 120,
-                            width: 120,
+                            height: size.height * 0.125,
+                            width: size.width * 0.25,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               boxShadow: <BoxShadow>[
@@ -106,10 +104,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
                                     blurRadius: 8),
                               ],
                             ),
-                            child: ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(30.0)),
-                              child: Image.network("${model.user!.photoURL}"),
+                            child: CircleAvatar(
+                              foregroundImage:
+                                  NetworkImage("${model.user!.photoURL}"),
                             ),
                           ),
                         ),
@@ -119,8 +116,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 4),
                     child: Text(
-                      'Chris Hemsworth',
-                      style: TextStyle(
+                      '${model.user!.displayName}',
+                      style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         color: AppTheme.grey,
                         fontSize: 18,
@@ -155,7 +152,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
           Column(
             children: <Widget>[
               ListTile(
-                title: Text(
+                title: const Text(
                   'Sign Out',
                   style: TextStyle(
                     fontFamily: AppTheme.fontName,
@@ -165,8 +162,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   ),
                   textAlign: TextAlign.left,
                 ),
-                trailing: Icon(
-                  Icons.power_settings_new,
+                trailing: const Icon(
+                  CupertinoIcons.power,
                   color: Colors.red,
                 ),
                 onTap: () {
@@ -202,26 +199,15 @@ class _HomeDrawerState extends State<HomeDrawer> {
               padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
               child: Row(
                 children: <Widget>[
-                  Container(
+                  const SizedBox(
                     width: 6.0,
                     height: 46.0,
-                    // decoration: BoxDecoration(
-                    //   color: widget.screenIndex == listData.index
-                    //       ? Colors.blue
-                    //       : Colors.transparent,
-                    //   borderRadius: new BorderRadius.only(
-                    //     topLeft: Radius.circular(0),
-                    //     topRight: Radius.circular(16),
-                    //     bottomLeft: Radius.circular(0),
-                    //     bottomRight: Radius.circular(16),
-                    //   ),
-                    // ),
                   ),
                   const Padding(
                     padding: EdgeInsets.all(4.0),
                   ),
                   listData.isAssetsImage
-                      ? Container(
+                      ? SizedBox(
                           width: 24,
                           height: 24,
                           child: Image.asset(listData.imageName,
@@ -263,14 +249,14 @@ class _HomeDrawerState extends State<HomeDrawer> {
                             0.0,
                             0.0),
                         child: Padding(
-                          padding: EdgeInsets.only(top: 8, bottom: 8),
+                          padding: const EdgeInsets.only(top: 8, bottom: 8),
                           child: Container(
                             width:
                                 MediaQuery.of(context).size.width * 0.75 - 64,
                             height: 46,
                             decoration: BoxDecoration(
                               color: Colors.blue.withOpacity(0.2),
-                              borderRadius: new BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(0),
                                 topRight: Radius.circular(28),
                                 bottomLeft: Radius.circular(0),
@@ -292,16 +278,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
   Future<void> navigationtoScreen(DrawerIndex indexScreen) async {
     widget.callBackIndex!(indexScreen);
   }
-}
-
-enum DrawerIndex {
-  HOME,
-  FeedBack,
-  Help,
-  Share,
-  About,
-  Invite,
-  Testing,
 }
 
 class DrawerList {

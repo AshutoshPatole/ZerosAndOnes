@@ -7,6 +7,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:zerosandones/views/home_page/home_page_view.dart';
 
 class LoginPageViewModel extends BaseViewModel {
   late Logger log;
@@ -36,13 +37,13 @@ class LoginPageViewModel extends BaseViewModel {
     assert(await _user.getIdToken() != null);
     User? currentUser = _auth.currentUser;
     assert(_user.uid == currentUser!.uid);
-    // _navigation.navigateWithTransition(
-    //   const HomePageView(),
-    //   duration: const Duration(milliseconds: 600),
-    //   curve: Curves.easeIn,
-    //   transitionClass: Transition.rightToLeftWithFade,
-    //   popGesture: false,
-    // );
+    _navigation.navigateWithTransition(
+      const HomePageView(),
+      duration: const Duration(milliseconds: 600),
+      curve: Curves.easeIn,
+      transitionClass: Transition.rightToLeftWithFade,
+      popGesture: false,
+    );
     log.i("User Name: ${_user.displayName}");
     log.i("User Email ${_user.email}");
   }
@@ -54,13 +55,13 @@ class LoginPageViewModel extends BaseViewModel {
           FacebookAuthProvider.credential(result.accessToken!.token);
 
       FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-      // _navigation.navigateWithTransition(
-      //   const HomePageView(),
-      //   duration: const Duration(milliseconds: 600),
-      //   curve: Curves.easeIn,
-      //   transitionClass: Transition.rightToLeftWithFade,
-      //   popGesture: false,
-      // );
+      _navigation.navigateWithTransition(
+        const HomePageView(),
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeIn,
+        transitionClass: Transition.rightToLeftWithFade,
+        popGesture: false,
+      );
     } else {
       log.e(result.status);
       log.e(result.message);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zerosandones/core/constants/drawer_enum.dart';
 import 'drawer_ui.dart';
 import 'home_page_view_model.dart';
 
@@ -116,7 +117,7 @@ class _HomePageViewState extends State<HomePageView>
                           transform: Matrix4.translationValues(
                               scrollController!.offset, 0.0, 0.0),
                           child: HomeDrawer(
-                            screenIndex: widget.screenIndex ?? DrawerIndex.HOME,
+                            screenIndex: widget.screenIndex ?? DrawerIndex.home,
                             iconAnimationController: iconAnimationController,
                             callBackIndex: (DrawerIndex indexType) {
                               onDrawerClick();
