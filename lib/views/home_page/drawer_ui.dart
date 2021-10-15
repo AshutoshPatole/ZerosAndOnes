@@ -167,7 +167,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   color: Colors.red,
                 ),
                 onTap: () {
-                  onTapped();
+                  model.logout();
                 },
               ),
               SizedBox(
@@ -178,10 +178,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
         ],
       ),
     );
-  }
-
-  void onTapped() {
-    print('Doing Something...'); // Print to console.
   }
 
   Widget inkwell(DrawerList listData) {

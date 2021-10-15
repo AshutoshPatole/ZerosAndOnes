@@ -37,7 +37,7 @@ class LoginPageViewModel extends BaseViewModel {
     assert(await _user.getIdToken() != null);
     User? currentUser = _auth.currentUser;
     assert(_user.uid == currentUser!.uid);
-    _navigation.navigateWithTransition(
+    _navigation.replaceWithTransition(
       const HomePageView(),
       duration: const Duration(milliseconds: 600),
       curve: Curves.easeIn,
@@ -55,7 +55,7 @@ class LoginPageViewModel extends BaseViewModel {
           FacebookAuthProvider.credential(result.accessToken!.token);
 
       FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-      _navigation.navigateWithTransition(
+      _navigation.replaceWithTransition(
         const HomePageView(),
         duration: const Duration(milliseconds: 600),
         curve: Curves.easeIn,
