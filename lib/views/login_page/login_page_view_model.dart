@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
@@ -7,7 +6,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:zerosandones/views/home_page/home_page_view.dart';
+import 'package:zerosandones/views/drawer_page/drawer_page_view.dart';
 
 class LoginPageViewModel extends BaseViewModel {
   late Logger log;
@@ -38,10 +37,9 @@ class LoginPageViewModel extends BaseViewModel {
     User? currentUser = _auth.currentUser;
     assert(_user.uid == currentUser!.uid);
     _navigation.replaceWithTransition(
-      const HomePageView(),
+      const DrawerPageView(),
+      transitionClass: Transition.rightToLeft,
       duration: const Duration(milliseconds: 600),
-      curve: Curves.easeIn,
-      transitionClass: Transition.rightToLeftWithFade,
       popGesture: false,
     );
     log.i("User Name: ${_user.displayName}");
@@ -56,9 +54,8 @@ class LoginPageViewModel extends BaseViewModel {
 
       FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
       _navigation.replaceWithTransition(
-        const HomePageView(),
+        const DrawerPageView(),
         duration: const Duration(milliseconds: 600),
-        curve: Curves.easeIn,
         transitionClass: Transition.rightToLeftWithFade,
         popGesture: false,
       );

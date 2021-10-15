@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:zerosandones/core/constants/drawer_enum.dart';
+import 'package:zerosandones/core/locator.dart';
+import 'package:zerosandones/core/router_constants.dart';
 import 'package:zerosandones/theme/app_theme.dart';
-import 'package:zerosandones/views/home_page/home_page_view_model.dart';
+import 'package:zerosandones/views/drawer_page/drawer_page_view_model.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer(
@@ -21,7 +24,7 @@ class HomeDrawer extends StatefulWidget {
 }
 
 class _HomeDrawerState extends State<HomeDrawer> {
-  HomePageViewModel model = HomePageViewModel();
+  DrawerPageViewModel model = DrawerPageViewModel();
 
   List<DrawerList>? drawerList;
   @override
@@ -70,7 +73,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
-            width: double.infinity,
+            width: size.width,
             padding: const EdgeInsets.only(top: 40.0),
             child: Container(
               padding: const EdgeInsets.all(16.0),
@@ -134,6 +137,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
           Divider(
             height: 1,
             color: AppTheme.grey.withOpacity(0.6),
+          ),
+          const SizedBox(
+            height: 4,
           ),
           Expanded(
             child: ListView.builder(
@@ -272,7 +278,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
   }
 
   Future<void> navigationtoScreen(DrawerIndex indexScreen) async {
-    widget.callBackIndex!(indexScreen);
+    final _navigation = locator<NavigationService>();
+    print(indexScreen);
+    _navigation.navigateTo(homePageViewRoute);
+    // widget.callBackIndex!(indexScreen);
   }
 }
 

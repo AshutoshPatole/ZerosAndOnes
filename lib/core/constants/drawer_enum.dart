@@ -4,5 +4,4 @@ enum DrawerIndex {
   share,
   about,
   invite,
-  testing,
 }
