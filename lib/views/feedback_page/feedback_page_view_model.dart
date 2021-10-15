@@ -2,10 +2,10 @@ import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zerosandones/core/logger.dart';
 
-class HomePageViewModel extends BaseViewModel {
+class FeedbackPageViewModel extends BaseViewModel {
   Logger? log;
 
-  HomePageViewModel() {
-    log = getLogger(runtimeType.toString());
+  FeedbackPageViewModel() {
+    this.log = getLogger(this.runtimeType.toString());
   }
 }

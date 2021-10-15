@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked_services/stacked_services.dart';
 import 'package:zerosandones/core/constants/drawer_enum.dart';
-import 'package:zerosandones/core/locator.dart';
-import 'package:zerosandones/core/router_constants.dart';
 import 'package:zerosandones/theme/app_theme.dart';
 import 'package:zerosandones/views/drawer_page/drawer_page_view_model.dart';
 
@@ -278,10 +275,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
   }
 
   Future<void> navigationtoScreen(DrawerIndex indexScreen) async {
-    final _navigation = locator<NavigationService>();
+    // final _navigation = locator<NavigationService>();
     print(indexScreen);
-    _navigation.navigateTo(homePageViewRoute);
-    // widget.callBackIndex!(indexScreen);
+    // _navigation.navigateTo(homePageViewRoute);
+    widget.callBackIndex!(indexScreen);
   }
 }
 

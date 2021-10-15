@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       navigatorKey: StackedService.navigatorKey,
       onGenerateRoute: router.Router.generateRoute,
-      initialRoute: user != null ? drawerPageViewRoute : loginPageViewRoute,
+      initialRoute: user != null ? navigationViewRoute : loginPageViewRoute,
     );
   }
 }
