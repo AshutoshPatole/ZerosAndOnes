@@ -8,12 +8,11 @@ class HomePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomePageViewModel>.reactive(
+      onModelReady: (model) {
+        model.getCurrentLocation(context);
+      },
       builder: (BuildContext context, HomePageViewModel viewModel, _) {
-        return Scaffold(
-          body: Center(
-            child: Text('HomePage View'),
-          ),
-        );
+        return Scaffold();
       },
       viewModelBuilder: () => HomePageViewModel(),
     );

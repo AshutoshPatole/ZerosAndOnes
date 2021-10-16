@@ -6,6 +6,8 @@ import 'package:zerosandones/views/home_page/home_page_view.dart';
 import 'navigation_view_model.dart';
 
 class NavigationView extends StatelessWidget {
+  const NavigationView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<NavigationViewModel>.reactive(
