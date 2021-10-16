@@ -12,22 +12,20 @@ class HomePageViewModel extends BaseViewModel {
   }
   final Geolocator geolocator = Geolocator();
 
-  // var for getting [LAT] and [LON]
   late Position currentPosition;
-  // var for storing address obtained from [_currentPosition]
+
   late String currentAddress;
-  // var for storing distance betweeen current location and required location
+
   late double distancebetweenTwoPoints;
   bool withinRadius = false;
+  bool isLocationEnabled = false;
 
-  /// getting the location in _getCurrentLocation which is initiated in init state .
   getCurrentLocation(BuildContext context) async {
     if (await Geolocator.isLocationServiceEnabled()) {
       Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
           .then((Position position) {
         currentPosition = position;
 
-        /// Finding distance between 2 points and setting boolean values to true if it is less than 3 km
         distancebetweenTwoPoints = Geolocator.distanceBetween(
               position.latitude,
               position.longitude,
@@ -38,7 +36,7 @@ class HomePageViewModel extends BaseViewModel {
         if (distancebetweenTwoPoints <= 3) {
           withinRadius = true;
         }
-        // _getAddressFromLatLng();
+
         log.i(distancebetweenTwoPoints.toString());
         log.i(currentPosition.latitude.toString());
         log.i(currentPosition.longitude.toString());
@@ -46,9 +44,9 @@ class HomePageViewModel extends BaseViewModel {
         log.e(e);
       });
     } else {
-      // turnOnLocation();
       log.e("turn on location");
-      turnOnLocation(context);
+      isLocationEnabled = false;
+      // turnOnLocation(context);
     }
   }
 
@@ -65,8 +63,6 @@ class HomePageViewModel extends BaseViewModel {
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
-                // Check [OpenLocationSetting] function in Globals.dart file
-                // Geolocator.openLocationSettings();
               },
               child: const Text('Turn on location'),
             )

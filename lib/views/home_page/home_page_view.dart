@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
 import 'home_page_view_model.dart';
 
@@ -12,7 +13,13 @@ class HomePageView extends StatelessWidget {
         model.getCurrentLocation(context);
       },
       builder: (BuildContext context, HomePageViewModel viewModel, _) {
-        return Scaffold();
+        return Scaffold(
+          body: viewModel.isLocationEnabled
+              ? Container()
+              : Center(
+                  child: SvgPicture.asset('assets/svg/nolocation.svg'),
+                ),
+        );
       },
       viewModelBuilder: () => HomePageViewModel(),
     );
