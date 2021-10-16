@@ -1,18 +1,21 @@
 import 'dart:async';
 
+import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
 import 'package:zerosandones/core/logger.dart';
 import 'package:zerosandones/core/models/user_location.dart';
 
 class LocationService {
-  late UserLocation _currentLocation;
   final log = getLogger("LocationService");
+
+  late UserLocation _currentLocation;
   var location = Location();
   final StreamController<UserLocation> _locationController =
       StreamController<UserLocation>();
 
+  double serviceableDistance = 0.0;
+
   LocationService() {
-    // Request permission to use location
     location.requestPermission().then((granted) {
       if (PermissionStatus.granted == granted) {
         location.onLocationChanged.listen((locationData) {
@@ -21,6 +24,13 @@ class LocationService {
               latitude: locationData.latitude,
               longitude: locationData.longitude,
             ));
+            serviceableDistance = Geolocator.distanceBetween(
+                  locationData.latitude!,
+                  locationData.longitude!,
+                  12.7806459999,
+                  80.2186767,
+                ) /
+                1000;
           }
         });
       }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zerosandones/core/models/user_location.dart';
 import 'home_page_view_model.dart';
@@ -17,10 +18,12 @@ class HomePageView extends StatelessWidget {
           body: StreamBuilder<UserLocation>(
             stream: viewModel.locationStream,
             builder: (context, snapshot) {
-              return Center(
-                child: Text(
-                    'Location: Lat${snapshot.data?.latitude}, Long: ${snapshot.data?.longitude}'),
-              );
+              return viewModel.servicableDistance
+                  ? Center(
+                      child: Text(
+                          'Location: Lat${snapshot.data?.latitude}, Long: ${snapshot.data?.longitude}'),
+                    )
+                  : SvgPicture.asset('assets/svg/nolocation.svg');
             },
           ),
         );

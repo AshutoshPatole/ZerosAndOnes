@@ -14,4 +14,6 @@ class HomePageViewModel extends BaseViewModel {
   }
 
   Stream<UserLocation> locationStream = LocationService().locationStream;
+
+  final bool servicableDistance = LocationService().serviceableDistance <= 4;
 }
