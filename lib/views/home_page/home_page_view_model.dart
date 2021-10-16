@@ -20,7 +20,7 @@ class HomePageViewModel extends BaseViewModel {
   final StreamController<UserLocation> _locationController =
       StreamController<UserLocation>();
 
-  double serviceableDistance = 0.0;
+  double serviceableDistance = -1.0;
   bool _isServiceable = false;
   String address = "";
   bool get isServiceableDistance => _isServiceable;
@@ -29,7 +29,7 @@ class HomePageViewModel extends BaseViewModel {
     location.requestPermission().then((granted) {
       if (PermissionStatus.granted == granted) {
         location.onLocationChanged.listen((locationData) {
-          if (locationData != null) {
+          if (locationData.latitude != null) {
             _locationController.add(UserLocation(
               latitude: locationData.latitude,
               longitude: locationData.longitude,

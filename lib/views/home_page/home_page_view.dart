@@ -22,50 +22,54 @@ class HomePageView extends StatelessWidget {
             child: StreamBuilder<UserLocation>(
               stream: viewModel.locationStream,
               builder: (context, snapshot) {
-                return viewModel.isServiceableDistance
-                    ? Column(
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 60,
-                            color: Colors.transparent,
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    CupertinoIcons.location_solid,
-                                    size: 20,
-                                    color: Colors.red,
-                                  ),
-                                  Text(viewModel.address),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
+                return viewModel.serviceableDistance < 0
+                    ? const Center(
+                        child: CircularProgressIndicator(),
                       )
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            'assets/svg/nolocation.svg',
-                            height: 300,
-                            width: 300,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Text(
-                              "Sorry! We are not available at this location till now but we hope reaching your nearest location soon.",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w600,
+                    : viewModel.isServiceableDistance
+                        ? Column(
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                height: 60,
+                                color: Colors.transparent,
+                                child: Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        CupertinoIcons.location_solid,
+                                        size: 20,
+                                        color: Colors.red,
+                                      ),
+                                      Text(viewModel.address),
+                                    ],
+                                  ),
+                                ),
                               ),
-                            ),
+                            ],
                           )
-                        ],
-                      );
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/svg/nolocation.svg',
+                                height: 300,
+                                width: 300,
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(16.0),
+                                child: Text(
+                                  "Sorry! We are not available at this location till now but we hope reaching your nearest location soon.",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
               },
             ),
           ),
