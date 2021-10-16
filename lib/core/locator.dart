@@ -1,8 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:zerosandones/core/services/location_service.dart';
-
 import 'logger.dart';
 
 final GetIt locator = GetIt.instance;
@@ -16,7 +14,5 @@ class LocatorInjector {
     locator.registerLazySingleton(() => DialogService());
     log.d('Registering Snackbar Service');
     locator.registerLazySingleton(() => SnackbarService());
-    log.d('Registering Location Service');
-    locator.registerLazySingleton(() => LocationService());
   }
 }
