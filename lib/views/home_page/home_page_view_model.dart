@@ -70,6 +70,6 @@ class HomePageViewModel extends BaseViewModel {
     List<loc.Placemark> placemarks = await loc.placemarkFromCoordinates(
         _location.latitude!, _location.longitude!);
     loc.Placemark place = placemarks[0];
-    address += "${place.locality}, ${place.postalCode}";
+    address += "${place.locality}";
   }
 }

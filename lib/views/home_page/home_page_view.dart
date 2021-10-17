@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zerosandones/core/models/user_location.dart';
+import 'package:zerosandones/theme/app_theme.dart';
 import 'package:zerosandones/widgets/dumb_widgets/not_serviceable_location.dart';
+import 'package:zerosandones/widgets/smart_widgets/home_header.dart';
 import 'home_page_view_model.dart';
 
 class HomePageView extends StatelessWidget {
@@ -30,24 +32,7 @@ class HomePageView extends StatelessWidget {
                     : viewModel.isServiceableDistance
                         ? Column(
                             children: [
-                              Container(
-                                width: double.infinity,
-                                height: 60,
-                                color: Colors.transparent,
-                                child: Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        CupertinoIcons.location_solid,
-                                        size: 20,
-                                        color: Colors.red,
-                                      ),
-                                      Text(viewModel.address),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                              HomeHeader(address: viewModel.address),
                             ],
                           )
                         : const NotServiceableLocation();
