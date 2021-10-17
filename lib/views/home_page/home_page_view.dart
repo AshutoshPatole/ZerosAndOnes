@@ -6,6 +6,7 @@ import 'package:zerosandones/core/models/mock_data.dart';
 import 'package:zerosandones/core/models/user_location.dart';
 import 'package:zerosandones/theme/app_theme.dart';
 import 'package:zerosandones/widgets/dumb_widgets/not_serviceable_location.dart';
+import 'package:zerosandones/widgets/smart_widgets/coupon.dart';
 import 'package:zerosandones/widgets/smart_widgets/home_header.dart';
 import 'home_page_view_model.dart';
 
@@ -44,89 +45,7 @@ class HomePageView extends StatelessWidget {
                                   SizedBox(
                                     height: size.height * 0.05,
                                   ),
-                                  Stack(
-                                    clipBehavior: Clip.none,
-                                    children: [
-                                      Container(
-                                        width: size.width,
-                                        height: size.height * 0.2,
-                                        padding: const EdgeInsets.all(20),
-                                        decoration: BoxDecoration(
-                                          color: AppTheme.primaryColor,
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: AppTheme.primaryColor
-                                                  .withOpacity(0.75),
-                                              spreadRadius: 0,
-                                              blurRadius: 5,
-                                              offset: const Offset(2, 4),
-                                            )
-                                          ],
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: const [
-                                            Text(
-                                              "25% Off",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 30,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            Text(
-                                              "Apply APPSPL25 coupon",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Positioned(
-                                        right: size.width * 0.05,
-                                        top: size.height * 0.05,
-                                        child: Container(
-                                          width: size.width * 0.4,
-                                          height: size.height * 0.4,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color:
-                                                Colors.white.withOpacity(0.2),
-                                          ),
-                                        ),
-                                      ),
-                                      Positioned(
-                                        left: size.width * 0.05,
-                                        bottom: size.height * 0.05,
-                                        child: Container(
-                                          width: size.width * 0.4,
-                                          height: size.height * 0.4,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color:
-                                                Colors.white.withOpacity(0.2),
-                                          ),
-                                        ),
-                                      ),
-                                      Positioned(
-                                        right: -50,
-                                        top: -65,
-                                        child: Image.asset(
-                                          'assets/images/nice.png',
-                                          width: 200,
-                                          height: 200,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                  const Coupon(),
                                   SizedBox(
                                     height: size.height * 0.05,
                                   ),
