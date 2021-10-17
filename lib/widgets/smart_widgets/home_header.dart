@@ -18,23 +18,17 @@ class HomeHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Spacer(),
-            const Padding(
-              padding: EdgeInsets.only(left: 32.0),
-              child: Icon(
-                CupertinoIcons.location_solid,
-                size: 16,
-                color: AppTheme.primaryColor,
-              ),
+            const Icon(
+              CupertinoIcons.location_solid,
+              size: 16,
+              color: AppTheme.primaryColor,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 4.0),
               child: Text(address),
             ),
             const Spacer(),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.0),
-              child: Icon(CupertinoIcons.shopping_cart),
-            )
+            const Icon(CupertinoIcons.shopping_cart)
           ],
         ),
       ),
