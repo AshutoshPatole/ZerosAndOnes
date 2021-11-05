@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -44,7 +45,12 @@ class HomePageView extends StatelessWidget {
                                   SizedBox(
                                     height: size.height * 0.05,
                                   ),
-                                  const Coupon(),
+                                  GestureDetector(
+                                    onTap: () {
+                                      // TODO : Open a page with terms and condition for the coupon code.
+                                    },
+                                    child: const Coupon(),
+                                  ),
                                   SizedBox(
                                     height: size.height * 0.05,
                                   ),
@@ -53,7 +59,7 @@ class HomePageView extends StatelessWidget {
                                     style: AppTheme.title,
                                   ),
                                   SizedBox(
-                                    height: size.height * 0.3,
+                                    height: size.height * 0.25,
                                     child: ListView.builder(
                                       shrinkWrap: true,
                                       scrollDirection: Axis.horizontal,
@@ -61,7 +67,7 @@ class HomePageView extends StatelessWidget {
                                       itemCount: mockFood.length,
                                       itemBuilder: (context, index) {
                                         return Container(
-                                          width: size.width * 0.3,
+                                          width: size.width * 0.35,
                                           height: size.height * 0.1,
                                           margin: const EdgeInsets.all(10),
                                           padding: const EdgeInsets.all(10),
@@ -84,25 +90,21 @@ class HomePageView extends StatelessWidget {
                                               SizedBox(
                                                 height: size.height * 0.025,
                                               ),
-                                              Image.asset(
-                                                  mockFood[index].imageLink),
-                                              SizedBox(
-                                                height: size.height * 0.01,
+                                              Hero(
+                                                tag:
+                                                    '${mockFood[index].imageLink}-$index,',
+                                                child: Image.asset(
+                                                  mockFood[index].imageLink,
+                                                ),
                                               ),
-                                              Text(mockFood[index].name),
-                                              Container(
-                                                width: size.width * 0.08,
-                                                height: size.height * 0.08,
-                                                decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
+                                              const Spacer(),
+                                              Text(
+                                                mockFood[index].name,
+                                                style: const TextStyle(
                                                   color: Colors.white,
+                                                  fontSize: 16.0,
                                                 ),
-                                                child: const Icon(
-                                                  CupertinoIcons.right_chevron,
-                                                  color: Colors.black,
-                                                  size: 16,
-                                                ),
-                                              )
+                                              ),
                                             ],
                                           ),
                                         );
