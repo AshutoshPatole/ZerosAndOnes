@@ -5,6 +5,7 @@ import 'package:stacked/stacked.dart';
 import 'package:zerosandones/core/models/mock_data.dart';
 import 'package:zerosandones/core/models/user_location.dart';
 import 'package:zerosandones/theme/app_theme.dart';
+import 'package:zerosandones/widgets/dumb_widgets/getting_location.dart';
 import 'package:zerosandones/widgets/dumb_widgets/not_serviceable_location.dart';
 import 'package:zerosandones/widgets/smart_widgets/coupon.dart';
 import 'package:zerosandones/widgets/smart_widgets/home_header.dart';
@@ -29,11 +30,7 @@ class HomePageView extends StatelessWidget {
               stream: viewModel.locationStream,
               builder: (context, snapshot) {
                 return viewModel.serviceableDistance < 0
-                    ? const Center(
-                        child: CircularProgressIndicator(
-                          semanticsValue: "Getting location",
-                        ),
-                      )
+                    ? const GetLocationCircularProgressIndicator()
                     : viewModel.isServiceableDistance
                         ? SingleChildScrollView(
                             physics: const BouncingScrollPhysics(),
