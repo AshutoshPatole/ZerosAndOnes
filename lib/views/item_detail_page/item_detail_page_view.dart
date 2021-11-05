@@ -10,7 +10,10 @@ class ItemDetailPageView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(),
           body: Center(
-            child: Text('ItemDetailPage View'),
+            child: Hero(
+              tag: "tag",
+              child: Image.asset("name"),
+            ),
           ),
         );
       },

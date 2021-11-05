@@ -5,8 +5,11 @@ import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
 import 'package:zerosandones/core/models/user_location.dart';
+import 'package:zerosandones/views/item_detail_page/item_detail_page_view.dart';
 
 class HomePageViewModel extends BaseViewModel {
   late Logger log;
@@ -14,6 +17,8 @@ class HomePageViewModel extends BaseViewModel {
   HomePageViewModel() {
     log = getLogger(runtimeType.toString());
   }
+
+  final _navigationService = locator<NavigationService>();
 
   late UserLocation _currentLocation;
   var location = Location();
@@ -71,5 +76,14 @@ class HomePageViewModel extends BaseViewModel {
         _location.latitude!, _location.longitude!);
     loc.Placemark place = placemarks[0];
     address += "${place.locality}";
+  }
+
+  navigateItemDetailPage(String imageTag) async {
+    _navigationService.replaceWithTransition(
+      ItemDetailPageView(),
+      duration: const Duration(milliseconds: 600),
+      transitionClass: Transition.rightToLeftWithFade,
+      popGesture: false,
+    );
   }
 }
