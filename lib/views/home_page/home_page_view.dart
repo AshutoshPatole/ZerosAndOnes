@@ -30,7 +30,9 @@ class HomePageView extends StatelessWidget {
               builder: (context, snapshot) {
                 return viewModel.serviceableDistance < 0
                     ? const Center(
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                          semanticsValue: "Getting location",
+                        ),
                       )
                     : viewModel.isServiceableDistance
                         ? SingleChildScrollView(

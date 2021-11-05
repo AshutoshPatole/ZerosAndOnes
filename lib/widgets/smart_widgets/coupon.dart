@@ -74,12 +74,12 @@ class Coupon extends StatelessWidget {
           ),
         ),
         Positioned(
-          right: -50,
-          top: -65,
+          right: -size.width * 0.25,
+          top: -size.height * 0.1,
           child: Image.asset(
             'assets/images/nice.png',
-            width: 200,
-            height: 200,
+            width: size.width * 0.8,
+            height: size.height * 0.3,
           ),
         ),
       ],
