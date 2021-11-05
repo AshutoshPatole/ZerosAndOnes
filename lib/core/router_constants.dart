@@ -5,3 +5,4 @@ const String drawerPageViewRoute = 'drawerPageViewRoute';
 const String navigationViewRoute = 'navigationViewRoute';
 const String homePageViewRoute = 'homePageViewRoute';
 const String feedbackPageViewRoute = 'feedbackPageViewRoute';
+const String itemDetailPageViewRoute = 'itemDetailPageViewRoute';

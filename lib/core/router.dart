@@ -8,6 +8,7 @@ import 'package:zerosandones/views/drawer_page/drawer_page_view.dart' as view1;
 import 'package:zerosandones/views/navigation/navigation_view.dart' as view2;
 import 'package:zerosandones/views/home_page/home_page_view.dart' as view3;
 import 'package:zerosandones/views/feedback_page/feedback_page_view.dart' as view4;
+import 'package:zerosandones/views/item_detail_page/item_detail_page_view.dart' as view5;
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -22,6 +23,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => view3.HomePageView());
       case feedbackPageViewRoute:
         return MaterialPageRoute(builder: (_) => view4.FeedbackPageView());
+      case itemDetailPageViewRoute:
+        return MaterialPageRoute(builder: (_) => view5.ItemDetailPageView());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
