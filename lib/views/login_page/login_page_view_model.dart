@@ -33,7 +33,6 @@ class LoginPageViewModel extends BaseViewModel {
         await _auth.signInWithCredential(credential);
     _user = userCredential.user!;
     assert(!_user.isAnonymous);
-    assert(await _user.getIdToken() != null);
     User? currentUser = _auth.currentUser;
     assert(_user.uid == currentUser!.uid);
     _navigation.replaceWithTransition(

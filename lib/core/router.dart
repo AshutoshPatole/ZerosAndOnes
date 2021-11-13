@@ -16,17 +16,19 @@ class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case loginPageViewRoute:
-        return MaterialPageRoute(builder: (_) => view0.LoginPageView());
+        return MaterialPageRoute(builder: (_) => const view0.LoginPageView());
       case drawerPageViewRoute:
-        return MaterialPageRoute(builder: (_) => view1.DrawerPageView());
+        return MaterialPageRoute(builder: (_) => const view1.DrawerPageView());
       case navigationViewRoute:
-        return MaterialPageRoute(builder: (_) => view2.NavigationView());
+        return MaterialPageRoute(builder: (_) => const view2.NavigationView());
       case homePageViewRoute:
-        return MaterialPageRoute(builder: (_) => view3.HomePageView());
+        return MaterialPageRoute(builder: (_) => const view3.HomePageView());
       case feedbackPageViewRoute:
-        return MaterialPageRoute(builder: (_) => view4.FeedbackPageView());
+        return MaterialPageRoute(
+            builder: (_) => const view4.FeedbackPageView());
       case itemDetailPageViewRoute:
-        return MaterialPageRoute(builder: (_) => view5.ItemDetailPageView());
+        return MaterialPageRoute(
+            builder: (_) => const view5.ItemDetailPageView());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

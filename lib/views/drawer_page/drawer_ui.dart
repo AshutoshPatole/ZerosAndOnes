@@ -275,9 +275,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
   }
 
   Future<void> navigationtoScreen(DrawerIndex indexScreen) async {
-    // final _navigation = locator<NavigationService>();
-    print(indexScreen);
-    // _navigation.navigateTo(homePageViewRoute);
     widget.callBackIndex!(indexScreen);
   }
 }

@@ -6,6 +6,6 @@ class FeedbackPageViewModel extends BaseViewModel {
   Logger? log;
 
   FeedbackPageViewModel() {
-    this.log = getLogger(this.runtimeType.toString());
+    log = getLogger(runtimeType.toString());
   }
 }

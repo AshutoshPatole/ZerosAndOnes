@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zerosandones/core/constants/drawer_enum.dart';
@@ -124,7 +126,9 @@ class _DrawerPageViewState extends State<DrawerPageView>
                               onDrawerClick();
                               try {
                                 widget.onDrawerCall!(indexType);
-                              } catch (e) {}
+                              } catch (e) {
+                                log(e.toString());
+                              }
                             },
                           ),
                         );

@@ -43,6 +43,5 @@ class NotServiceableLocation extends StatelessWidget {
         )
       ],
     );
-    ;
   }
 }
