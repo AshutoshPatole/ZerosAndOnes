@@ -44,7 +44,7 @@ class HomePageViewModel extends BaseViewModel {
             serviceableDistance = Geolocator.distanceBetween(
                   locationData.latitude!,
                   locationData.longitude!,
-                  12.7806459999,
+                  20.7806459999,
                   80.2186767,
                 ) /
                 1000;
