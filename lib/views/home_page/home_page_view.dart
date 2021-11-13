@@ -64,46 +64,57 @@ class HomePageView extends StatelessWidget {
                                       physics: const BouncingScrollPhysics(),
                                       itemCount: mockFood.length,
                                       itemBuilder: (context, index) {
-                                        return Container(
-                                          width: size.width * 0.35,
-                                          height: size.height * 0.1,
-                                          margin: const EdgeInsets.all(10),
-                                          padding: const EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                            color: AppTheme.primaryColor,
-                                            borderRadius:
-                                                BorderRadius.circular(20.0),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: AppTheme.primaryColor
-                                                    .withOpacity(0.75),
-                                                spreadRadius: 1,
-                                                blurRadius: 5,
-                                                offset: const Offset(2, 4.5),
-                                              )
-                                            ],
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                height: size.height * 0.025,
-                                              ),
-                                              Hero(
-                                                tag:
-                                                    '${mockFood[index].imageLink}-$index,',
-                                                child: Image.asset(
-                                                  mockFood[index].imageLink,
+                                        final data = mockFood[index];
+                                        return GestureDetector(
+                                          onTap: () {
+                                            viewModel.setFoodHolderProps(
+                                                foodImagePath: data.imageLink,
+                                                foodName: data.name,
+                                                foodTag:
+                                                    '${mockFood[index].imageLink}-$index,');
+                                            viewModel.navigateItemDetailPage();
+                                          },
+                                          child: Container(
+                                            width: size.width * 0.35,
+                                            height: size.height * 0.1,
+                                            margin: const EdgeInsets.all(10),
+                                            padding: const EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                              color: AppTheme.primaryColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: AppTheme.primaryColor
+                                                      .withOpacity(0.75),
+                                                  spreadRadius: 1,
+                                                  blurRadius: 5,
+                                                  offset: const Offset(2, 4.5),
+                                                )
+                                              ],
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: size.height * 0.025,
                                                 ),
-                                              ),
-                                              const Spacer(),
-                                              Text(
-                                                mockFood[index].name,
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16.0,
+                                                Hero(
+                                                  tag:
+                                                      '${mockFood[index].imageLink}-$index,',
+                                                  child: Image.asset(
+                                                    data.imageLink,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                                const Spacer(),
+                                                Text(
+                                                  data.name,
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 16.0,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         );
                                       },

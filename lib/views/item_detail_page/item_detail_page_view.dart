@@ -3,16 +3,41 @@ import 'package:stacked/stacked.dart';
 import 'item_detail_page_view_model.dart';
 
 class ItemDetailPageView extends StatelessWidget {
+  // final String imageTag;
+  // final String imagePath;
+  // const ItemDetailPageView(
+  //     {Key? key,
+  //     this.imageTag = "",
+  //     this.imagePath = ""}) // ! TODO Might cause a crash here. Fix it later
+  //     : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    Size _size = MediaQuery.of(context).size;
     return ViewModelBuilder<ItemDetailPageViewModel>.reactive(
       builder: (BuildContext context, ItemDetailPageViewModel viewModel, _) {
         return Scaffold(
-          appBar: AppBar(),
-          body: Center(
-            child: Hero(
-              tag: "tag",
-              child: Image.asset("name"),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: _size.height * 0.08,
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Hero(
+                    tag: viewModel.foodTag,
+                    child: Image.asset(viewModel.foodImagePath),
+                  ),
+                ),
+                Text(
+                  viewModel.foodName,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w700, fontSize: 24.0),
+                )
+              ],
             ),
           ),
         );

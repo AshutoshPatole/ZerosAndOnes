@@ -9,6 +9,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
 import 'package:zerosandones/core/models/user_location.dart';
+import 'package:zerosandones/core/services/temp.dart';
 import 'package:zerosandones/views/item_detail_page/item_detail_page_view.dart';
 
 class HomePageViewModel extends BaseViewModel {
@@ -19,6 +20,7 @@ class HomePageViewModel extends BaseViewModel {
   }
 
   final _navigationService = locator<NavigationService>();
+  final foodDetailHolder = locator<FoodDetailHolder>();
 
   late UserLocation _currentLocation;
   var location = Location();
@@ -78,11 +80,17 @@ class HomePageViewModel extends BaseViewModel {
     address += "${place.locality}";
   }
 
-  navigateItemDetailPage(String imageTag) async {
-    _navigationService.replaceWithTransition(
+  setFoodHolderProps(
+      {required String foodTag,
+      required String foodImagePath,
+      required String foodName}) {
+    foodDetailHolder.setAllProperties(foodTag, foodImagePath, foodName);
+  }
+
+  navigateItemDetailPage() async {
+    _navigationService.navigateWithTransition(
       ItemDetailPageView(),
-      duration: const Duration(milliseconds: 600),
-      transitionClass: Transition.rightToLeftWithFade,
+      duration: const Duration(milliseconds: 500),
       popGesture: false,
     );
   }
