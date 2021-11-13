@@ -12,7 +12,7 @@ class FoodDetailHolder extends BaseViewModel {
   String get foodPrice => _foodPrice;
 
   setAllProperties(
-      String foodTag, String foodImagePath, String foodName, String fodPrice) {
+      String foodTag, String foodImagePath, String foodName, String foodPrice) {
     _foodImagePath = foodImagePath;
     _foodTag = foodTag;
     _foodName = foodName;
