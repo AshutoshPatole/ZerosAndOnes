@@ -71,7 +71,8 @@ class HomePageView extends StatelessWidget {
                                                 foodImagePath: data.imageLink,
                                                 foodName: data.name,
                                                 foodTag:
-                                                    '${mockFood[index].imageLink}-$index,');
+                                                    '${data.imageLink}-$index,',
+                                                foodPrice: data.price);
                                             viewModel.navigateItemDetailPage();
                                           },
                                           child: Container(

@@ -2,7 +2,7 @@ import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
-import 'package:zerosandones/core/services/temp.dart';
+import 'package:zerosandones/core/services/food_details_holder.dart';
 
 class ItemDetailPageViewModel extends BaseViewModel {
   late Logger log;
@@ -14,4 +14,5 @@ class ItemDetailPageViewModel extends BaseViewModel {
   String get foodName => _foodDetailHolder.foodName;
   String get foodImagePath => _foodDetailHolder.foodImagePath;
   String get foodTag => _foodDetailHolder.foodTag;
+  String get foodPrice => _foodDetailHolder.foodPrice;
 }

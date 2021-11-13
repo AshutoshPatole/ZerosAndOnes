@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:zerosandones/core/services/temp.dart';
+import 'package:zerosandones/core/services/food_details_holder.dart';
 import 'logger.dart';
 
 final GetIt locator = GetIt.instance;
