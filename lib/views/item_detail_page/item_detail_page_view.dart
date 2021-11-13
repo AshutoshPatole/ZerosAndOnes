@@ -3,13 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'item_detail_page_view_model.dart';
 
 class ItemDetailPageView extends StatelessWidget {
-  // final String imageTag;
-  // final String imagePath;
-  // const ItemDetailPageView(
-  //     {Key? key,
-  //     this.imageTag = "",
-  //     this.imagePath = ""}) // ! TODO Might cause a crash here. Fix it later
-  //     : super(key: key);
+  const ItemDetailPageView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

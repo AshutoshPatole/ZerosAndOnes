@@ -89,7 +89,7 @@ class HomePageViewModel extends BaseViewModel {
 
   navigateItemDetailPage() async {
     _navigationService.navigateWithTransition(
-      ItemDetailPageView(),
+      const ItemDetailPageView(),
       duration: const Duration(milliseconds: 500),
       popGesture: false,
     );
