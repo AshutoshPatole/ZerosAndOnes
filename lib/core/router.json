@@ -1,5 +1,5 @@
 {
-    "last_updated": "Fri, 05 Nov 2021 13:17:37 GMT",
+    "last_updated": "Sun, 14 Nov 2021 06:14:39 GMT",
     "routes": [
         {
             "file_path": "views/login_page/login_page_view.dart",
@@ -30,6 +30,11 @@
             "file_path": "views/item_detail_page/item_detail_page_view.dart",
             "route_name": "item_detail_pageViewRoute",
             "view_name": "ItemDetailPageView"
+        },
+        {
+            "file_path": "views/cart_page/cart_page_view.dart",
+            "route_name": "cart_pageViewRoute",
+            "view_name": "CartPageView"
         }
     ]
 }
