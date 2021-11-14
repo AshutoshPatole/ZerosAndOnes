@@ -69,66 +69,72 @@ class _HomeDrawerState extends State<HomeDrawer> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Container(
-            width: size.width,
-            padding: const EdgeInsets.only(top: 40.0),
-            child: Container(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  AnimatedBuilder(
-                    animation: widget.iconAnimationController!,
-                    builder: (BuildContext context, Widget? child) {
-                      return ScaleTransition(
-                        scale: AlwaysStoppedAnimation<double>(1.0 -
-                            (widget.iconAnimationController!.value) * 0.2),
-                        child: RotationTransition(
-                          turns: AlwaysStoppedAnimation<double>(Tween<double>(
-                                      begin: 0.0, end: 24.0)
-                                  .animate(CurvedAnimation(
-                                      parent: widget.iconAnimationController!,
-                                      curve: Curves.fastOutSlowIn))
-                                  .value /
-                              360),
-                          child: Container(
-                            height: size.height * 0.125,
-                            width: size.width * 0.25,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              boxShadow: <BoxShadow>[
-                                BoxShadow(
-                                    color: AppTheme.grey.withOpacity(0.6),
-                                    offset: const Offset(2.0, 4.0),
-                                    blurRadius: 8),
-                              ],
+          model.user?.phoneNumber != null
+              ? Container(
+                  width: size.width,
+                  padding: const EdgeInsets.only(top: 40.0),
+                  child: Container(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        AnimatedBuilder(
+                          animation: widget.iconAnimationController!,
+                          builder: (BuildContext context, Widget? child) {
+                            return ScaleTransition(
+                              scale: AlwaysStoppedAnimation<double>(1.0 -
+                                  (widget.iconAnimationController!.value) *
+                                      0.2),
+                              child: RotationTransition(
+                                turns: AlwaysStoppedAnimation<double>(
+                                    Tween<double>(begin: 0.0, end: 24.0)
+                                            .animate(CurvedAnimation(
+                                                parent: widget
+                                                    .iconAnimationController!,
+                                                curve: Curves.fastOutSlowIn))
+                                            .value /
+                                        360),
+                                child: Container(
+                                  height: size.height * 0.125,
+                                  width: size.width * 0.25,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    boxShadow: <BoxShadow>[
+                                      BoxShadow(
+                                          color: AppTheme.grey.withOpacity(0.6),
+                                          offset: const Offset(2.0, 4.0),
+                                          blurRadius: 8),
+                                    ],
+                                  ),
+                                  child: CircleAvatar(
+                                    foregroundImage:
+                                        NetworkImage("${model.user!.photoURL}"),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8, left: 4),
+                          child: Text(
+                            '${model.user!.displayName}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: AppTheme.grey,
+                              fontSize: 18,
                             ),
-                            // child: CircleAvatar(
-                            //   foregroundImage:
-                            //       NetworkImage("${model.user!.photoURL}"),
-                            // ),
                           ),
                         ),
-                      );
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, left: 4),
-                    child: Text(
-                      // '${model.user!.displayName}',
-                      "",
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: AppTheme.grey,
-                        fontSize: 18,
-                      ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
+                )
+              : Container(
+                  width: size.width,
+                  padding: const EdgeInsets.only(top: 40.0),
+                ),
           const SizedBox(
             height: 4,
           ),
