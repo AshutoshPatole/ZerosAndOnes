@@ -15,6 +15,8 @@ class LocatorInjector {
     locator.registerLazySingleton(() => DialogService());
     log.d('Registering Snackbar Service');
     locator.registerLazySingleton(() => SnackbarService());
+    log.d('Registering BottomSheet Service');
+    locator.registerLazySingleton(() => BottomSheetService());
     locator.registerLazySingleton(() => FoodDetailHolder());
   }
 }

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -12,9 +13,15 @@ class Navigation extends BaseViewModel {
     log = getLogger(runtimeType.toString());
   }
   final _navigationService = locator<NavigationService>();
+  final _bottomSheetService = locator<BottomSheetService>();
+  // TODO Bottom sheet
+  final _auth = FirebaseAuth.instance;
+
   navigateToCartPage() async {
-    _navigationService.navigateTo(
-      cartPageViewRoute,
-    );
+    _auth.currentUser?.phoneNumber != null
+        ? _navigationService.navigateTo(
+            cartPageViewRoute,
+          )
+        : null;
   }
 }

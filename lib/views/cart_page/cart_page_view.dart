@@ -10,8 +10,18 @@ class CartPageView extends StatelessWidget {
     return ViewModelBuilder<CartPageViewModel>.reactive(
       builder: (BuildContext context, CartPageViewModel viewModel, _) {
         return Scaffold(
-          body: Center(
-            child: Text('CartPage View'),
+          body: SafeArea(
+            child: Column(
+              children: const [
+                Text(
+                  "Your Cart",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24.0,
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
