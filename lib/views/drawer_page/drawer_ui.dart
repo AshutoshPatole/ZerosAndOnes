@@ -104,10 +104,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
                                     blurRadius: 8),
                               ],
                             ),
-                            child: CircleAvatar(
-                              foregroundImage:
-                                  NetworkImage("${model.user!.photoURL}"),
-                            ),
+                            // child: CircleAvatar(
+                            //   foregroundImage:
+                            //       NetworkImage("${model.user!.photoURL}"),
+                            // ),
                           ),
                         ),
                       );
@@ -116,7 +116,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 4),
                     child: Text(
-                      '${model.user!.displayName}',
+                      // '${model.user!.displayName}',
+                      "",
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         color: AppTheme.grey,

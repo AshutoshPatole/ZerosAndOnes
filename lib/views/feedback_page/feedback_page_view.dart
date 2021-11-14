@@ -9,7 +9,7 @@ class FeedbackPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<FeedbackPageViewModel>.reactive(
       builder: (BuildContext context, FeedbackPageViewModel viewModel, _) {
-        return Scaffold(
+        return const Scaffold(
           body: Center(
             child: Text('FeedbackPage View'),
           ),
