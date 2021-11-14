@@ -22,6 +22,7 @@ dependencies:
   location: ^4.3.0
   logger: ^1.1.0
   responsive_builder: ^0.4.1
+  rive: ^0.7.33
   stacked: ^2.2.7
   stacked_services: ^0.8.15
 dev_dependencies:
@@ -34,3 +35,4 @@ flutter:
   assets:
     - assets/svg/
     - assets/images/
+    - assets/animations/

@@ -155,25 +155,46 @@ class _HomeDrawerState extends State<HomeDrawer> {
           ),
           Column(
             children: <Widget>[
-              ListTile(
-                title: const Text(
-                  'Sign Out',
-                  style: TextStyle(
-                    fontFamily: AppTheme.fontName,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: AppTheme.darkText,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-                trailing: const Icon(
-                  CupertinoIcons.power,
-                  color: Colors.red,
-                ),
-                onTap: () {
-                  model.logout();
-                },
-              ),
+              model.user?.phoneNumber != null
+                  ? ListTile(
+                      title: const Text(
+                        'Sign Out',
+                        style: TextStyle(
+                          fontFamily: AppTheme.fontName,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: AppTheme.darkText,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      trailing: const Icon(
+                        CupertinoIcons.power,
+                        color: Colors.red,
+                      ),
+                      onTap: () {
+                        model.logout();
+                      },
+                    )
+                  : ListTile(
+                      title: const Text(
+                        'Sign In',
+                        style: TextStyle(
+                          fontFamily: AppTheme.fontName,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: AppTheme.darkText,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      trailing: const Icon(
+                        CupertinoIcons.power,
+                        color: AppTheme.primaryColor,
+                        size: 30,
+                      ),
+                      onTap: () {
+                        // TODO : Navigate to login screen
+                      },
+                    ),
               SizedBox(
                 height: MediaQuery.of(context).padding.bottom,
               )
