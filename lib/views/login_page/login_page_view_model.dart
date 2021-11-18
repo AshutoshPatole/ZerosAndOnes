@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -18,6 +19,7 @@ class LoginPageViewModel extends BaseViewModel {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   late User _user;
+  PhoneNumber number = PhoneNumber(isoCode: 'IN');
 
   final NavigationService _navigation = locator<NavigationService>();
 
