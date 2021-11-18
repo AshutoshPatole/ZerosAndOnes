@@ -40,7 +40,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       ),
       DrawerList(
         index: DrawerIndex.feedback,
-        labelName: 'FeedBack',
+        labelName: 'Advice',
         icon: const Icon(CupertinoIcons.chat_bubble_text),
       ),
       DrawerList(
@@ -102,22 +102,26 @@ class _HomeDrawerState extends State<HomeDrawer> {
                                   },
                                   child: Stack(
                                     children: [
-                                      Container(
-                                        height: size.height * 0.125,
-                                        width: size.width * 0.25,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          boxShadow: <BoxShadow>[
-                                            BoxShadow(
-                                                color: AppTheme.grey
-                                                    .withOpacity(0.6),
-                                                offset: const Offset(2.0, 4.0),
-                                                blurRadius: 8),
-                                          ],
-                                        ),
-                                        child: CircleAvatar(
-                                          foregroundImage: NetworkImage(
-                                              "${model.user!.photoURL}"),
+                                      Hero(
+                                        tag: "photoURL",
+                                        child: Container(
+                                          height: size.height * 0.125,
+                                          width: size.width * 0.25,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            boxShadow: <BoxShadow>[
+                                              BoxShadow(
+                                                  color: AppTheme.grey
+                                                      .withOpacity(0.6),
+                                                  offset:
+                                                      const Offset(2.0, 4.0),
+                                                  blurRadius: 8),
+                                            ],
+                                          ),
+                                          child: CircleAvatar(
+                                            foregroundImage: NetworkImage(
+                                                "${model.user!.photoURL}"),
+                                          ),
                                         ),
                                       ),
                                       const Positioned(
