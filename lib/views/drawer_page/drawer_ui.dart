@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'package:zerosandones/core/constants/drawer_enum.dart';
 import 'package:zerosandones/theme/app_theme.dart';
 import 'package:zerosandones/views/drawer_page/drawer_page_view_model.dart';
@@ -198,7 +199,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         size: 30,
                       ),
                       onTap: () {
-                        // TODO : Navigate to login screen
+                        model.navigateToLoginScreen();
                       },
                     ),
               SizedBox(
