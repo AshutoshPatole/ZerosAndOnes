@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -22,10 +24,10 @@ class Navigation extends BaseViewModel {
         ? _navigationService.navigateTo(
             cartPageViewRoute,
           )
-        : showCustomBottomSheet();
+        : showLoginConfirmation();
   }
 
-  Future showCustomBottomSheet() async {
+  Future showLoginConfirmation() async {
     var sheetResponse = await _bottomSheetService.showCustomSheet(
       variant: BottomSheetType.floating,
       title: 'Please Login !',
@@ -35,5 +37,17 @@ class Navigation extends BaseViewModel {
     );
 
     log.i('Login confirmation : ${sheetResponse?.confirmed}');
+    if (sheetResponse?.confirmed == true) {
+      _navigationService.navigateTo(loginPageViewRoute);
+    } else {
+      Fluttertoast.showToast(
+        msg: "You cannot add products in the cart.",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red.shade600,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
   }
 }
