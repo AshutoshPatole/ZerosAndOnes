@@ -20,7 +20,7 @@ class Navigation extends BaseViewModel {
   final _auth = FirebaseAuth.instance;
 
   navigateToCartPage() async {
-    _auth.currentUser?.phoneNumber != null
+    _auth.currentUser?.uid != null
         ? _navigationService.navigateTo(
             cartPageViewRoute,
           )
