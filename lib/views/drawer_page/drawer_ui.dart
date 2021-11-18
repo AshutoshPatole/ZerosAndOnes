@@ -96,21 +96,46 @@ class _HomeDrawerState extends State<HomeDrawer> {
                                                 curve: Curves.fastOutSlowIn))
                                             .value /
                                         360),
-                                child: Container(
-                                  height: size.height * 0.125,
-                                  width: size.width * 0.25,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    boxShadow: <BoxShadow>[
-                                      BoxShadow(
-                                          color: AppTheme.grey.withOpacity(0.6),
-                                          offset: const Offset(2.0, 4.0),
-                                          blurRadius: 8),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    model.navigateToEditProfileScreen();
+                                  },
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        height: size.height * 0.125,
+                                        width: size.width * 0.25,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          boxShadow: <BoxShadow>[
+                                            BoxShadow(
+                                                color: AppTheme.grey
+                                                    .withOpacity(0.6),
+                                                offset: const Offset(2.0, 4.0),
+                                                blurRadius: 8),
+                                          ],
+                                        ),
+                                        child: CircleAvatar(
+                                          foregroundImage: NetworkImage(
+                                              "${model.user!.photoURL}"),
+                                        ),
+                                      ),
+                                      const Positioned(
+                                        bottom: 2,
+                                        right: 5,
+                                        child: CircleAvatar(
+                                          radius: 10,
+                                          backgroundColor: Colors.white,
+                                          child: Center(
+                                            child: Icon(
+                                              CupertinoIcons.pencil,
+                                              size: 15,
+                                              color: AppTheme.primaryColor,
+                                            ),
+                                          ),
+                                        ),
+                                      )
                                     ],
-                                  ),
-                                  child: CircleAvatar(
-                                    foregroundImage:
-                                        NetworkImage("${model.user!.photoURL}"),
                                   ),
                                 ),
                               ),

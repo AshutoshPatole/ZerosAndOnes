@@ -8,3 +8,4 @@ const String feedbackPageViewRoute = 'feedbackPageViewRoute';
 const String itemDetailPageViewRoute = 'itemDetailPageViewRoute';
 const String cartPageViewRoute = 'cartPageViewRoute';
 const String phoneAuthPageViewRoute = 'phoneAuthPageViewRoute';
+const String editProfilePageViewRoute = 'editProfilePageViewRoute';

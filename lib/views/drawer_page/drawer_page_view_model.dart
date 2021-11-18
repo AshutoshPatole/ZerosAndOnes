@@ -25,4 +25,8 @@ class DrawerPageViewModel extends BaseViewModel {
   Future navigateToLoginScreen() async {
     _navigationService.navigateTo(loginPageViewRoute);
   }
+
+  Future navigateToEditProfileScreen() async {
+    _navigationService.navigateTo(editProfilePageViewRoute);
+  }
 }
