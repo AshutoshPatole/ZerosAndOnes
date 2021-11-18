@@ -10,6 +10,7 @@ import 'package:zerosandones/views/home_page/home_page_view.dart' as view3;
 import 'package:zerosandones/views/feedback_page/feedback_page_view.dart' as view4;
 import 'package:zerosandones/views/item_detail_page/item_detail_page_view.dart' as view5;
 import 'package:zerosandones/views/cart_page/cart_page_view.dart' as view6;
+import 'package:zerosandones/views/phone_auth_page/phone_auth_page_view.dart' as view7;
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -28,6 +29,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => view5.ItemDetailPageView());
       case cartPageViewRoute:
         return MaterialPageRoute(builder: (_) => view6.CartPageView());
+      case phoneAuthPageViewRoute:
+        return MaterialPageRoute(builder: (_) => view7.PhoneAuthPageView());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

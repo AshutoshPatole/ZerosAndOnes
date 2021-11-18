@@ -4,10 +4,13 @@ import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:zerosandones/core/constants/bottom_sheet_enum.dart';
 import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:zerosandones/core/router_constants.dart';
 import 'package:zerosandones/views/drawer_page/drawer_page_view.dart';
+import 'package:zerosandones/views/navigation/navigation_view.dart';
 
 class LoginPageViewModel extends BaseViewModel {
   late Logger log;
@@ -19,35 +22,8 @@ class LoginPageViewModel extends BaseViewModel {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   late User _user;
-  PhoneNumber number = PhoneNumber(isoCode: 'IN');
 
   final NavigationService _navigation = locator<NavigationService>();
-
-  Future signInWithPhone(String phone) async {
-    await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: phone,
-      timeout: const Duration(seconds: 60),
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        await _auth.signInWithCredential(credential);
-      },
-      verificationFailed: (FirebaseAuthException e) {
-        if (e.code == 'invalid-phone-number') {
-          log.e('The provided phone number is not valid.');
-        }
-      },
-      codeSent: (String verificationId, int? resendToken) async {
-        String smsCode = 'xxxx';
-
-        // Create a PhoneAuthCredential with the code
-        PhoneAuthCredential credential = PhoneAuthProvider.credential(
-            verificationId: verificationId, smsCode: smsCode);
-
-        // Sign the user in (or link) with the credential
-        await _auth.signInWithCredential(credential);
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
-  }
 
   Future signInWithGoogle() async {
     GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
@@ -64,7 +40,7 @@ class LoginPageViewModel extends BaseViewModel {
     User? currentUser = _auth.currentUser;
     assert(_user.uid == currentUser!.uid);
     _navigation.replaceWithTransition(
-      const DrawerPageView(),
+      const NavigationView(),
       transitionClass: Transition.rightToLeft,
       duration: const Duration(milliseconds: 600),
       popGesture: false,

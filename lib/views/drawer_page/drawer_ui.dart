@@ -69,7 +69,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          model.user?.phoneNumber != null
+          model.user?.uid != null
               ? Container(
                   width: size.width,
                   padding: const EdgeInsets.only(top: 40.0),
@@ -161,7 +161,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
           ),
           Column(
             children: <Widget>[
-              model.user?.phoneNumber != null
+              model.user?.uid != null
                   ? ListTile(
                       title: const Text(
                         'Sign Out',

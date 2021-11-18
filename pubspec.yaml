@@ -23,7 +23,7 @@ dependencies:
   intl_phone_number_input: ^0.7.0+2
   location: ^4.3.0
   logger: ^1.1.0
-  pin_code_fields: ^7.3.0
+  pinput: ^1.2.2
   responsive_builder: ^0.4.1
   rive: ^0.7.33
   stacked: ^2.2.7
