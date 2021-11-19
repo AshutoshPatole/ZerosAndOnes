@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
@@ -6,6 +8,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:zerosandones/core/constants/bottom_sheet_enum.dart';
 import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
+import 'package:zerosandones/theme/app_theme.dart';
 
 class PhoneAuthPageViewModel extends BaseViewModel {
   late Logger log;
@@ -15,15 +18,24 @@ class PhoneAuthPageViewModel extends BaseViewModel {
   }
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  late User _user;
   PhoneNumber initialCountry = PhoneNumber(isoCode: 'IN');
   late PhoneNumber number;
 
-  final NavigationService _navigation = locator<NavigationService>();
   final BottomSheetService _bottomSheetService = locator<BottomSheetService>();
 
   setNumber(PhoneNumber phoneNumber) {
     number = phoneNumber;
+  }
+
+  otpSentToast() {
+    Fluttertoast.showToast(
+      msg: "Please wait we have initiated the process.",
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.green.shade400,
+      textColor: Colors.black,
+      fontSize: 14.0,
+    );
   }
 
   Future signInWithPhone() async {

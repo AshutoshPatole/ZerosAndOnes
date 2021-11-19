@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zerosandones/theme/app_theme.dart';
 import 'phone_auth_page_view_model.dart';
 
 class PhoneAuthPageView extends StatefulWidget {
@@ -51,10 +52,13 @@ class _PhoneAuthPageViewState extends State<PhoneAuthPageView> {
                       height: _size.height * 0.1,
                     ),
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: AppTheme.primaryColor,
+                      ),
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
-                          // print(controller.text); 9d22f78c21e1aea0bb895ab0768f351095684454
+                          viewModel.otpSentToast();
                           viewModel.signInWithPhone();
                         }
                       },
