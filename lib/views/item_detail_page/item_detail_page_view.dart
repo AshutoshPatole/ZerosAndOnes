@@ -29,7 +29,9 @@ class ItemDetailPageView extends StatelessWidget {
                 Text(
                   viewModel.foodName,
                   style: const TextStyle(
-                      fontWeight: FontWeight.w700, fontSize: 24.0),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 24.0,
+                  ),
                 )
               ],
             ),

@@ -21,7 +21,7 @@ class OtpViewModel extends BaseViewModel {
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
           verificationId: verificationId, smsCode: code);
       await _auth.currentUser?.linkWithCredential(credential);
-      _navigationService.navigateTo(navigationViewRoute);
+      _navigationService.replaceWith(navigationViewRoute);
     } on FirebaseAuthException catch (e) {
       log.e(e.message);
     }
