@@ -31,7 +31,8 @@ class PhoneAuthPageViewModel extends BaseViewModel {
       phoneNumber: number.toString(),
       timeout: const Duration(seconds: 60),
       verificationCompleted: (PhoneAuthCredential credential) async {
-        await _auth.signInWithCredential(credential);
+        // await _auth.signInWithCredential(credential);
+        await _auth.currentUser?.linkWithCredential(credential);
       },
       verificationFailed: (FirebaseAuthException e) {
         if (e.code == 'invalid-phone-number') {
