@@ -30,48 +30,64 @@ class HomePageView extends StatelessWidget {
               builder: (context, snapshot) {
                 return viewModel.serviceableDistance < 0
                     ? const GetLocationCircularProgressIndicator()
-                    : SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              HomeHeader(address: viewModel.address),
-                              SizedBox(
-                                height: size.height * 0.01,
-                              ),
-                              viewModel.isServiceableDistance
-                                  ? SizedBox(
-                                      height: size.height * 0.03,
-                                    )
-                                  : const NotServiceableLocation(),
-                              SizedBox(
-                                height: size.height * 0.02,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  // TODO : Open a page with terms and condition for the coupon code.
-                                },
-                                child: const Coupon(),
-                              ),
-                              SizedBox(
-                                height: size.height * 0.05,
-                              ),
-                              const Text(
-                                "Categories",
-                                style: AppTheme.title,
-                              ),
-                              SizedBox(
-                                height: size.height * 0.25,
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.horizontal,
-                                  physics: const BouncingScrollPhysics(),
-                                  itemCount: mockFood.length,
-                                  itemBuilder: (context, index) {
-                                    final data = mockFood[index];
-                                    return GestureDetector(
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HomeHeader(address: viewModel.address),
+                            SizedBox(
+                              height: size.height * 0.01,
+                            ),
+                            viewModel.isServiceableDistance
+                                ? SizedBox(
+                                    height: size.height * 0.03,
+                                  )
+                                : const NotServiceableLocation(),
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                // TODO : Open a page with terms and condition for the coupon code.
+                              },
+                              child: const Coupon(),
+                            ),
+                            SizedBox(
+                              height: size.height * 0.05,
+                            ),
+                            const Text(
+                              "Categories",
+                              style: AppTheme.title,
+                            ),
+                            SizedBox(
+                              height: size.height * 0.05,
+                            ),
+                            Expanded(
+                              child: GridView.builder(
+                                shrinkWrap: true,
+                                physics: const BouncingScrollPhysics(),
+                                itemCount: mockFood.length,
+                                itemBuilder: (context, index) {
+                                  final data = mockFood[index];
+                                  return Container(
+                                    height: size.height * 0.2,
+                                    margin: const EdgeInsets.all(8),
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: AppTheme.primaryColor,
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: AppTheme.primaryColor
+                                              .withOpacity(0.75),
+                                          spreadRadius: 1,
+                                          blurRadius: 5,
+                                          offset: const Offset(2, 4.5),
+                                        )
+                                      ],
+                                    ),
+                                    child: GestureDetector(
                                       onTap: () {
                                         viewModel.setFoodHolderProps(
                                             foodImagePath: data.imageLink,
@@ -81,54 +97,67 @@ class HomePageView extends StatelessWidget {
                                             foodPrice: data.price);
                                         viewModel.navigateItemDetailPage();
                                       },
-                                      child: Container(
-                                        width: size.width * 0.35,
-                                        height: size.height * 0.1,
-                                        margin: const EdgeInsets.all(10),
-                                        padding: const EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
-                                          color: AppTheme.primaryColor,
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: AppTheme.primaryColor
-                                                  .withOpacity(0.75),
-                                              spreadRadius: 1,
-                                              blurRadius: 5,
-                                              offset: const Offset(2, 4.5),
-                                            )
-                                          ],
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            SizedBox(
-                                              height: size.height * 0.025,
-                                            ),
-                                            Hero(
-                                              tag:
-                                                  '${mockFood[index].imageLink}-$index,',
-                                              child: Image.asset(
-                                                data.imageLink,
+                                      child: Stack(
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Column(
+                                            children: [
+                                              SizedBox(
+                                                height: size.height * 0.06,
+                                              ),
+                                              Hero(
+                                                tag:
+                                                    '${mockFood[index].imageLink}-$index,',
+                                                child: Image.asset(
+                                                  data.imageLink,
+                                                ),
+                                              ),
+                                              const Spacer(),
+                                              Text(
+                                                data.name,
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16.0,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Positioned(
+                                            right: -size.width * 0.0285,
+                                            top: -size.height * 0.015,
+                                            child: Container(
+                                              width: size.width * 0.15,
+                                              height: size.height * 0.05,
+                                              decoration: BoxDecoration(
+                                                color: Colors.white
+                                                    .withOpacity(0.8),
+                                                borderRadius:
+                                                    const BorderRadius.only(
+                                                  topRight:
+                                                      Radius.circular(20.0),
+                                                  bottomLeft:
+                                                      Radius.circular(20.0),
+                                                ),
+                                              ),
+                                              child: Center(
+                                                child: Text("₹ ${data.price}"),
                                               ),
                                             ),
-                                            const Spacer(),
-                                            Text(
-                                              data.name,
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 16.0,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                    );
-                                  },
+                                    ),
+                                  );
+                                },
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 0.7,
+                                  mainAxisSpacing: 10,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       );
               },
