@@ -101,15 +101,14 @@ class EditProfilePageView extends StatelessWidget {
                       },
                     ),
                   ),
-                  SizedBox(
-                    height: _size.height * 0.1,
-                  ),
+                  const Spacer(),
                   Align(
                     alignment: Alignment.center,
                     child: Text(
                       viewModel.user.uid,
                       style: const TextStyle(
                         fontSize: 12.0,
+                        color: Colors.grey,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -123,10 +122,14 @@ class EditProfilePageView extends StatelessWidget {
                       "App Version 0.0.1",
                       style: TextStyle(
                         fontSize: 12.0,
+                        color: Colors.grey,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: _size.height * 0.02,
+                  ),
                 ],
               ),
             ),
