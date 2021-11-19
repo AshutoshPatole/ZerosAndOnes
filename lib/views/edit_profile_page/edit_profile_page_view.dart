@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zerosandones/theme/app_theme.dart';
@@ -59,9 +60,73 @@ class EditProfilePageView extends StatelessWidget {
                       itemName: "Name", itemData: viewModel.user.displayName!),
                   ProfileRow(
                       itemName: "Email", itemData: viewModel.user.email!),
-                  ProfileRow(
-                      itemName: "Phone Number",
-                      itemData: viewModel.user.phoneNumber ?? "N/A"),
+                  Stack(
+                    children: [
+                      ProfileRow(
+                          itemName: "Phone Number",
+                          itemData: viewModel.user.phoneNumber ?? "N/A"),
+                      Positioned(
+                        left: _size.width * 0.31,
+                        bottom: 8,
+                        child: GestureDetector(
+                          onTap: () {
+                            viewModel.navigateToPhoneAuthenticationPage();
+                          },
+                          child: const Icon(
+                            CupertinoIcons.pencil_circle,
+                            size: 20,
+                            color: AppTheme.primaryColor,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: _size.height * 0.1,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: TextButton(
+                      child: const Text(
+                        "Delete Account",
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      onPressed: () {
+                        // ON HOLD
+                        // TODO: Implement delete account firebase extension
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: _size.height * 0.1,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      viewModel.user.uid,
+                      style: const TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: _size.height * 0.02,
+                  ),
+                  const Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "App Version 0.0.1",
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
