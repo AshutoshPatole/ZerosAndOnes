@@ -103,7 +103,7 @@ class HomePageView extends StatelessWidget {
                                                   children: [
                                                     SizedBox(
                                                       height:
-                                                          size.height * 0.06,
+                                                          size.height * 0.03,
                                                     ),
                                                     Hero(
                                                       tag:

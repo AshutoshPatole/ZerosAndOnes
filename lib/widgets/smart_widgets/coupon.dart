@@ -51,24 +51,30 @@ class Coupon extends StatelessWidget {
         ),
         Positioned(
           right: size.width * 0.05,
-          top: size.height * 0.05,
+          top: size.height * 0.1,
           child: Container(
             width: size.width * 0.4,
-            height: size.height * 0.4,
+            height: size.height * 0.1,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(100),
+                topRight: Radius.circular(100),
+              ),
               color: Colors.white.withOpacity(0.2),
             ),
           ),
         ),
         Positioned(
           left: size.width * 0.05,
-          bottom: size.height * 0.05,
+          top: size.height * 0,
           child: Container(
             width: size.width * 0.4,
-            height: size.height * 0.4,
+            height: size.height * 0.1,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(100),
+                bottomRight: Radius.circular(100),
+              ),
               color: Colors.white.withOpacity(0.2),
             ),
           ),
