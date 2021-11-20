@@ -88,17 +88,17 @@ class HomePageViewModel extends BaseViewModel {
     address += "${place.locality}";
   }
 
-  // setFoodHolderProps(
-  //     {required String foodTag,
-  //     required String foodImagePath,
-  //     required String foodName,
-  //     required String foodPrice,
-  //     required String foodRating,
-  //     required List<Ingredients> ingredients,
-  //     required String description}) {
-  //   foodDetailHolder.setAllProperties(foodTag, foodImagePath, foodName,
-  //       foodPrice, foodRating, ingredients, description);
-  // }
+  setFoodHolderProps(
+      {required String foodTag,
+      required String foodImagePath,
+      required String foodName,
+      required String foodPrice,
+      required String foodRating,
+      required Ingredients ingredients,
+      required String description}) {
+    foodDetailHolder.setAllProperties(foodTag, foodImagePath, foodName,
+        foodPrice, foodRating, ingredients, description);
+  }
 
   Stream<List<Item>> getData() {
     final stream = _database.collection("items").snapshots();

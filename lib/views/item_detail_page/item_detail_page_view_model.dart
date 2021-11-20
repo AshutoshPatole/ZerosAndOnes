@@ -2,7 +2,7 @@ import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
-import 'package:zerosandones/core/models/mock_ingredients.dart';
+import 'package:zerosandones/core/models/item.dart';
 import 'package:zerosandones/core/services/firebase/add_user_service.dart';
 import 'package:zerosandones/core/services/food_details_holder.dart';
 
@@ -20,5 +20,5 @@ class ItemDetailPageViewModel extends BaseViewModel {
   String get foodTag => _foodDetailHolder.foodTag;
   String get foodPrice => _foodDetailHolder.foodPrice;
   String get description => _foodDetailHolder.description;
-  List<Ingredients> get ingredients => _foodDetailHolder.ingredients;
+  Ingredients get ingredients => _foodDetailHolder.ingredients;
 }

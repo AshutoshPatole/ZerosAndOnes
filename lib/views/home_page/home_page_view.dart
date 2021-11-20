@@ -94,18 +94,21 @@ class HomePageView extends StatelessWidget {
                                               ),
                                               child: GestureDetector(
                                                 onTap: () {
-                                                  // viewModel.setFoodHolderProps(
-                                                  //   foodImagePath: data.imageLink,
-                                                  //   foodName: data.name,
-                                                  //   foodTag:
-                                                  //       '${data.imageLink}-$index,',
-                                                  //   foodPrice: data.price,
-                                                  //   foodRating: data.ratings,
-                                                  //   ingredients: data.ingredients,
-                                                  //   description: data.description,
-                                                  // );
-                                                  // viewModel
-                                                  //     .navigateItemDetailPage();
+                                                  viewModel.setFoodHolderProps(
+                                                    foodImagePath: data.photo,
+                                                    foodName: data.name,
+                                                    foodTag:
+                                                        '${data.photo}-$index,',
+                                                    foodPrice: data.price,
+                                                    foodRating:
+                                                        data.rating.toString(),
+                                                    ingredients:
+                                                        data.ingredients,
+                                                    description:
+                                                        data.description,
+                                                  );
+                                                  viewModel
+                                                      .navigateItemDetailPage();
                                                 },
                                                 child: Stack(
                                                   clipBehavior: Clip.none,

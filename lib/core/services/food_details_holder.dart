@@ -1,5 +1,5 @@
 import 'package:stacked/stacked.dart';
-import 'package:zerosandones/core/models/mock_ingredients.dart';
+import 'package:zerosandones/core/models/item.dart';
 
 class FoodDetailHolder extends BaseViewModel {
   late String _foodTag;
@@ -7,7 +7,7 @@ class FoodDetailHolder extends BaseViewModel {
   late String _foodName;
   late String _foodPrice;
   late String _foodRating;
-  late List<Ingredients> _ingredients;
+  late Ingredients _ingredients;
   late String _description;
 
   String get foodTag => _foodTag;
@@ -15,7 +15,7 @@ class FoodDetailHolder extends BaseViewModel {
   String get foodName => _foodName;
   String get foodPrice => _foodPrice;
   String get foodRating => _foodRating;
-  List<Ingredients> get ingredients => _ingredients;
+  Ingredients get ingredients => _ingredients;
   String get description => _description;
 
   setAllProperties(
@@ -24,7 +24,7 @@ class FoodDetailHolder extends BaseViewModel {
       String foodName,
       String foodPrice,
       String foodRating,
-      List<Ingredients> ingredients,
+      Ingredients ingredients,
       String description) {
     _foodImagePath = foodImagePath;
     _foodTag = foodTag;
