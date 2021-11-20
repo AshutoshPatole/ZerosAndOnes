@@ -1,5 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geocoding/geocoding.dart' as loc;
 import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
@@ -10,6 +13,7 @@ import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
 import 'package:zerosandones/core/models/mock_ingredients.dart';
 import 'package:zerosandones/core/models/user_location.dart';
+import 'package:zerosandones/core/services/firebase/add_user_service.dart';
 import 'package:zerosandones/core/services/food_details_holder.dart';
 import 'package:zerosandones/views/item_detail_page/item_detail_page_view.dart';
 
@@ -22,6 +26,10 @@ class HomePageViewModel extends BaseViewModel {
 
   final _navigationService = locator<NavigationService>();
   final foodDetailHolder = locator<FoodDetailHolder>();
+  final userService = locator<UserService>();
+
+  final FirebaseFirestore _database = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
 
   late UserLocation _currentLocation;
   var location = Location();
@@ -91,6 +99,14 @@ class HomePageViewModel extends BaseViewModel {
       required String description}) {
     foodDetailHolder.setAllProperties(foodTag, foodImagePath, foodName,
         foodPrice, foodRating, ingredients, description);
+  }
+
+  getData() async {
+    QuerySnapshot<Map<String, dynamic>> data =
+        await _database.collection("items").get();
+    for (var doc in data.docs) {
+      log.i(doc.data().toString());
+    }
   }
 
   navigateItemDetailPage() async {

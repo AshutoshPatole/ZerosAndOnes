@@ -19,6 +19,7 @@ class HomePageView extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return ViewModelBuilder<HomePageViewModel>.reactive(
       onModelReady: (model) {
+        model.getData();
         model.startLocation();
         model.getAddress();
       },

@@ -19,7 +19,7 @@ var mockFood = [
       "assets/images/chapati.png",
       "4.9",
       [
-        Ingredients("Salt", "8 grams", "1.2%% "),
+        Ingredients("Salt", "8 grams", "1.2%"),
         Ingredients("Fat", "10 grams", " 16% "),
         Ingredients("Energy", "278 Kcal", " 46% "),
         Ingredients("Proteins", "9 grams", " 4% "),

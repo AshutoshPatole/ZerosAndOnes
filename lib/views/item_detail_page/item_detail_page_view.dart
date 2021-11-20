@@ -189,15 +189,25 @@ class ItemDetailPageView extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
                         ),
-                        Container(
-                          width: _size.width * 0.4,
-                          height: _size.height * 0.075,
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.9),
-                            borderRadius: BorderRadius.circular(40.0),
-                          ),
-                          child: const Center(
-                            child: Text("Add to Cart"),
+                        GestureDetector(
+                          onTap: () {
+                            viewModel.userService.addItemToCart(
+                              itemId: "abcdef",
+                              itemPhoto: "abcdef_photo",
+                              price: viewModel.foodPrice,
+                              quantity: "1",
+                            );
+                          },
+                          child: Container(
+                            width: _size.width * 0.4,
+                            height: _size.height * 0.075,
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.9),
+                              borderRadius: BorderRadius.circular(40.0),
+                            ),
+                            child: const Center(
+                              child: Text("Add to Cart"),
+                            ),
                           ),
                         )
                       ],

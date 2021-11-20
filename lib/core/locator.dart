@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:zerosandones/core/services/firebase/add_user_service.dart';
 import 'package:zerosandones/core/services/food_details_holder.dart';
 import 'logger.dart';
 
@@ -18,5 +19,6 @@ class LocatorInjector {
     log.d('Registering BottomSheet Service');
     locator.registerLazySingleton(() => BottomSheetService());
     locator.registerLazySingleton(() => FoodDetailHolder());
+    locator.registerLazySingleton(() => UserService());
   }
 }
