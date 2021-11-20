@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geocoding/geocoding.dart' as loc;
@@ -11,7 +9,8 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
-import 'package:zerosandones/core/models/mock_ingredients.dart';
+import 'package:zerosandones/core/models/item.dart';
+// import 'package:zerosandones/core/models/mock_ingredients.dart';
 import 'package:zerosandones/core/models/user_location.dart';
 import 'package:zerosandones/core/services/firebase/add_user_service.dart';
 import 'package:zerosandones/core/services/food_details_holder.dart';
@@ -89,24 +88,23 @@ class HomePageViewModel extends BaseViewModel {
     address += "${place.locality}";
   }
 
-  setFoodHolderProps(
-      {required String foodTag,
-      required String foodImagePath,
-      required String foodName,
-      required String foodPrice,
-      required String foodRating,
-      required List<Ingredients> ingredients,
-      required String description}) {
-    foodDetailHolder.setAllProperties(foodTag, foodImagePath, foodName,
-        foodPrice, foodRating, ingredients, description);
-  }
+  // setFoodHolderProps(
+  //     {required String foodTag,
+  //     required String foodImagePath,
+  //     required String foodName,
+  //     required String foodPrice,
+  //     required String foodRating,
+  //     required List<Ingredients> ingredients,
+  //     required String description}) {
+  //   foodDetailHolder.setAllProperties(foodTag, foodImagePath, foodName,
+  //       foodPrice, foodRating, ingredients, description);
+  // }
 
-  getData() async {
-    QuerySnapshot<Map<String, dynamic>> data =
-        await _database.collection("items").get();
-    for (var doc in data.docs) {
-      log.i(doc.data().toString());
-    }
+  Stream<List<Item>> getData() {
+    final stream = _database.collection("items").snapshots();
+    return stream.map((event) => event.docs.map((doc) {
+          return Item.fromJson(doc.data());
+        }).toList());
   }
 
   navigateItemDetailPage() async {

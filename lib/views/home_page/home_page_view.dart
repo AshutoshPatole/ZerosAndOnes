@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zerosandones/core/models/item.dart';
 import 'package:zerosandones/core/models/mock_data.dart';
 import 'package:zerosandones/core/models/user_location.dart';
 import 'package:zerosandones/theme/app_theme.dart';
@@ -64,148 +65,168 @@ class HomePageView extends StatelessWidget {
                                       style: AppTheme.title,
                                     ),
                                   ),
-                                  SliverGrid(
-                                    delegate: SliverChildBuilderDelegate(
-                                      (context, index) {
-                                        final data = mockFood[index];
-                                        return Container(
-                                          height: size.height * 0.2,
-                                          margin: const EdgeInsets.all(8),
-                                          padding: const EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                            color: AppTheme.primaryColor,
-                                            borderRadius:
-                                                BorderRadius.circular(20.0),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: AppTheme.primaryColor
-                                                    .withOpacity(0.75),
-                                                spreadRadius: 1,
-                                                blurRadius: 5,
-                                                offset: const Offset(2, 4.5),
-                                              )
-                                            ],
-                                          ),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              viewModel.setFoodHolderProps(
-                                                foodImagePath: data.imageLink,
-                                                foodName: data.name,
-                                                foodTag:
-                                                    '${data.imageLink}-$index,',
-                                                foodPrice: data.price,
-                                                foodRating: data.ratings,
-                                                ingredients: data.ingredients,
-                                                description: data.description,
-                                              );
-                                              viewModel
-                                                  .navigateItemDetailPage();
-                                            },
-                                            child: Stack(
-                                              clipBehavior: Clip.none,
-                                              children: [
-                                                Column(
+                                  StreamBuilder(
+                                    stream: viewModel.getData(),
+                                    builder: (context,
+                                        AsyncSnapshot<List<Item>> snapshot) {
+                                      return SliverGrid(
+                                        delegate: SliverChildBuilderDelegate(
+                                          (context, index) {
+                                            final data = snapshot.data![index];
+                                            return Container(
+                                              height: size.height * 0.2,
+                                              margin: const EdgeInsets.all(8),
+                                              padding: const EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                color: AppTheme.primaryColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(20.0),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: AppTheme.primaryColor
+                                                        .withOpacity(0.75),
+                                                    spreadRadius: 1,
+                                                    blurRadius: 5,
+                                                    offset:
+                                                        const Offset(2, 4.5),
+                                                  )
+                                                ],
+                                              ),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  // viewModel.setFoodHolderProps(
+                                                  //   foodImagePath: data.imageLink,
+                                                  //   foodName: data.name,
+                                                  //   foodTag:
+                                                  //       '${data.imageLink}-$index,',
+                                                  //   foodPrice: data.price,
+                                                  //   foodRating: data.ratings,
+                                                  //   ingredients: data.ingredients,
+                                                  //   description: data.description,
+                                                  // );
+                                                  // viewModel
+                                                  //     .navigateItemDetailPage();
+                                                },
+                                                child: Stack(
+                                                  clipBehavior: Clip.none,
                                                   children: [
-                                                    SizedBox(
-                                                      height:
-                                                          size.height * 0.03,
-                                                    ),
-                                                    Hero(
-                                                      tag:
-                                                          '${mockFood[index].imageLink}-$index,',
-                                                      child: Image.asset(
-                                                        data.imageLink,
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      height:
-                                                          size.height * 0.025,
-                                                    ),
-                                                    Text(
-                                                      data.name,
-                                                      style: const TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        fontSize: 16.0,
-                                                      ),
-                                                    ),
-                                                    const Spacer(),
-                                                    Padding(
-                                                      padding: const EdgeInsets
-                                                              .symmetric(
-                                                          horizontal: 10),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          const Icon(
-                                                            CupertinoIcons
-                                                                .heart,
-                                                            color: Colors.white,
+                                                    Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: size.height *
+                                                              0.03,
+                                                        ),
+                                                        Hero(
+                                                          tag:
+                                                              '${mockFood[index].imageLink}-$index,',
+                                                          child: Image.network(
+                                                            data.photo,
                                                           ),
-                                                          Text(
-                                                            data.ratings,
+                                                        ),
+                                                        SizedBox(
+                                                          height: size.height *
+                                                              0.025,
+                                                        ),
+                                                        Text(
+                                                          data.name,
+                                                          style:
+                                                              const TextStyle(
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontSize: 16.0,
+                                                          ),
+                                                        ),
+                                                        const Spacer(),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .symmetric(
+                                                                  horizontal:
+                                                                      10),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              const Icon(
+                                                                CupertinoIcons
+                                                                    .heart,
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                              Text(
+                                                                data.rating
+                                                                    .toString(),
+                                                                style:
+                                                                    const TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    Positioned(
+                                                      right:
+                                                          -size.width * 0.0285,
+                                                      top: -size.height * 0.015,
+                                                      child: Container(
+                                                        width:
+                                                            size.width * 0.15,
+                                                        height:
+                                                            size.height * 0.05,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white
+                                                              .withOpacity(0.6),
+                                                          borderRadius:
+                                                              const BorderRadius
+                                                                  .only(
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    20.0),
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    20.0),
+                                                          ),
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            "₹ ${data.price}",
                                                             style:
                                                                 const TextStyle(
-                                                              color:
-                                                                  Colors.white,
                                                               fontWeight:
                                                                   FontWeight
-                                                                      .w700,
-                                                              fontSize: 18.0,
+                                                                      .bold,
                                                             ),
-                                                          )
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                Positioned(
-                                                  right: -size.width * 0.0285,
-                                                  top: -size.height * 0.015,
-                                                  child: Container(
-                                                    width: size.width * 0.15,
-                                                    height: size.height * 0.05,
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.white
-                                                          .withOpacity(0.6),
-                                                      borderRadius:
-                                                          const BorderRadius
-                                                              .only(
-                                                        topRight:
-                                                            Radius.circular(
-                                                                20.0),
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                20.0),
-                                                      ),
-                                                    ),
-                                                    child: Center(
-                                                      child: Text(
-                                                        "₹ ${data.price}",
-                                                        style: const TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      childCount: mockFood.length,
-                                    ),
-                                    gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      childAspectRatio: 0.7,
-                                      mainAxisSpacing: 10,
-                                    ),
+                                              ),
+                                            );
+                                          },
+                                          childCount:
+                                              snapshot.data?.length ?? 0,
+                                        ),
+                                        gridDelegate:
+                                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2,
+                                          childAspectRatio: 0.7,
+                                          mainAxisSpacing: 10,
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ],
                               ),
