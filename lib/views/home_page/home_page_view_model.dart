@@ -94,7 +94,7 @@ class HomePageViewModel extends BaseViewModel {
       required String foodName,
       required String foodPrice,
       required String foodRating,
-      required Ingredients ingredients,
+      required List<Ingredient> ingredients,
       required String description}) {
     foodDetailHolder.setAllProperties(foodTag, foodImagePath, foodName,
         foodPrice, foodRating, ingredients, description);
@@ -103,6 +103,7 @@ class HomePageViewModel extends BaseViewModel {
   Stream<List<Item>> getData() {
     final stream = _database.collection("items").snapshots();
     return stream.map((event) => event.docs.map((doc) {
+          print(doc.data());
           return Item.fromJson(doc.data());
         }).toList());
   }

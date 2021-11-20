@@ -20,5 +20,5 @@ class ItemDetailPageViewModel extends BaseViewModel {
   String get foodTag => _foodDetailHolder.foodTag;
   String get foodPrice => _foodDetailHolder.foodPrice;
   String get description => _foodDetailHolder.description;
-  Ingredients get ingredients => _foodDetailHolder.ingredients;
+  List<Ingredient> get ingredients => _foodDetailHolder.ingredients;
 }

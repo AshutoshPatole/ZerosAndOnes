@@ -7,7 +7,7 @@ class FoodDetailHolder extends BaseViewModel {
   late String _foodName;
   late String _foodPrice;
   late String _foodRating;
-  late Ingredients _ingredients;
+  late List<Ingredient> _ingredients;
   late String _description;
 
   String get foodTag => _foodTag;
@@ -15,7 +15,7 @@ class FoodDetailHolder extends BaseViewModel {
   String get foodName => _foodName;
   String get foodPrice => _foodPrice;
   String get foodRating => _foodRating;
-  Ingredients get ingredients => _ingredients;
+  List<Ingredient> get ingredients => _ingredients;
   String get description => _description;
 
   setAllProperties(
@@ -24,7 +24,7 @@ class FoodDetailHolder extends BaseViewModel {
       String foodName,
       String foodPrice,
       String foodRating,
-      Ingredients ingredients,
+      List<Ingredient> ingredients,
       String description) {
     _foodImagePath = foodImagePath;
     _foodTag = foodTag;

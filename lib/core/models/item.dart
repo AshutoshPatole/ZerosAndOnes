@@ -2,6 +2,7 @@
 //
 //     final item = itemFromJson(jsonString);
 
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
 List<Item> itemFromJson(String str) =>
@@ -15,85 +16,58 @@ class Item {
     required this.price,
     required this.name,
     required this.rating,
+    required this.photo,
     required this.description,
     required this.ingredients,
-    required this.photo,
   });
 
-  String price;
-  String name;
-  double rating;
-  String description;
-  Ingredients ingredients;
-  String photo;
+  final String price;
+  final String name;
+  final double rating;
+  final String photo;
+  final String description;
+  final List<Ingredient> ingredients;
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
         price: json["price"],
         name: json["name"],
         rating: json["rating"].toDouble(),
-        description: json["description"],
-        ingredients: Ingredients.fromJson(json["ingredients"]),
         photo: json["photo"],
+        description: json["description"],
+        ingredients: List<Ingredient>.from(
+            json["ingredients"].map((x) => Ingredient.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "price": price,
         "name": name,
         "rating": rating,
-        "description": description,
-        "ingredients": ingredients.toJson(),
         "photo": photo,
+        "description": description,
+        "ingredients": List<dynamic>.from(ingredients.map((x) => x.toJson())),
       };
 }
 
-class Ingredients {
-  Ingredients({
-    required this.salt,
-    required this.protein,
-    required this.fat,
-    required this.sugar,
-    required this.energy,
-  });
-
-  Energy salt;
-  Energy protein;
-  Energy fat;
-  Energy sugar;
-  Energy energy;
-
-  factory Ingredients.fromJson(Map<String, dynamic> json) => Ingredients(
-        salt: Energy.fromJson(json["salt"]),
-        protein: Energy.fromJson(json["protein"]),
-        fat: Energy.fromJson(json["fat"]),
-        sugar: Energy.fromJson(json["sugar"]),
-        energy: Energy.fromJson(json["energy"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "salt": salt.toJson(),
-        "protein": protein.toJson(),
-        "fat": fat.toJson(),
-        "sugar": sugar.toJson(),
-        "energy": energy.toJson(),
-      };
-}
-
-class Energy {
-  Energy({
+class Ingredient {
+  Ingredient({
     required this.percentage,
+    required this.name,
     required this.grams,
   });
 
-  String percentage;
-  String grams;
+  final String percentage;
+  final String name;
+  final String grams;
 
-  factory Energy.fromJson(Map<String, dynamic> json) => Energy(
+  factory Ingredient.fromJson(Map<String, dynamic> json) => Ingredient(
         percentage: json["percentage"],
+        name: json["name"],
         grams: json["grams"],
       );
 
   Map<String, dynamic> toJson() => {
         "percentage": percentage,
+        "name": name,
         "grams": grams,
       };
 }
