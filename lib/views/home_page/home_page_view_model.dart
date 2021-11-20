@@ -84,9 +84,10 @@ class HomePageViewModel extends BaseViewModel {
       {required String foodTag,
       required String foodImagePath,
       required String foodName,
-      required String foodPrice}) {
+      required String foodPrice,
+      required String foodRating}) {
     foodDetailHolder.setAllProperties(
-        foodTag, foodImagePath, foodName, foodPrice);
+        foodTag, foodImagePath, foodName, foodPrice, foodRating);
   }
 
   navigateItemDetailPage() async {

@@ -92,7 +92,8 @@ class HomePageView extends StatelessWidget {
                                                   foodName: data.name,
                                                   foodTag:
                                                       '${data.imageLink}-$index,',
-                                                  foodPrice: data.price);
+                                                  foodPrice: data.price,
+                                                  foodRating: data.ratings);
                                               viewModel
                                                   .navigateItemDetailPage();
                                             },
@@ -112,14 +113,49 @@ class HomePageView extends StatelessWidget {
                                                         data.imageLink,
                                                       ),
                                                     ),
-                                                    const Spacer(),
+                                                    SizedBox(
+                                                      height:
+                                                          size.height * 0.025,
+                                                    ),
                                                     Text(
                                                       data.name,
                                                       style: const TextStyle(
                                                         color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w600,
                                                         fontSize: 16.0,
                                                       ),
                                                     ),
+                                                    const Spacer(),
+                                                    Padding(
+                                                      padding: const EdgeInsets
+                                                              .symmetric(
+                                                          horizontal: 10),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          const Icon(
+                                                            CupertinoIcons
+                                                                .heart,
+                                                            color: Colors.white,
+                                                          ),
+                                                          Text(
+                                                            data.ratings,
+                                                            style:
+                                                                const TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                              fontSize: 18.0,
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
                                                   ],
                                                 ),
                                                 Positioned(
@@ -130,7 +166,7 @@ class HomePageView extends StatelessWidget {
                                                     height: size.height * 0.05,
                                                     decoration: BoxDecoration(
                                                       color: Colors.white
-                                                          .withOpacity(0.8),
+                                                          .withOpacity(0.6),
                                                       borderRadius:
                                                           const BorderRadius
                                                               .only(
@@ -144,7 +180,12 @@ class HomePageView extends StatelessWidget {
                                                     ),
                                                     child: Center(
                                                       child: Text(
-                                                          "₹ ${data.price}"),
+                                                        "₹ ${data.price}",
+                                                        style: const TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
