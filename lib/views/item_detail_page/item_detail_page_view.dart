@@ -93,6 +93,9 @@ class ItemDetailPageView extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                SizedBox(
+                                  height: _size.height * 0.01,
+                                ),
                                 Text(
                                   data.name,
                                   style: const TextStyle(
@@ -100,6 +103,9 @@ class ItemDetailPageView extends StatelessWidget {
                                     color: Colors.white,
                                     fontSize: 18.0,
                                   ),
+                                ),
+                                SizedBox(
+                                  height: _size.height * 0.01,
                                 ),
                                 Text(
                                   data.grams,
@@ -113,8 +119,8 @@ class ItemDetailPageView extends StatelessWidget {
                                   height: _size.height * 0.02,
                                 ),
                                 Container(
-                                  width: _size.width * 0.15,
-                                  height: _size.height * 0.08,
+                                  width: _size.width * 0.18,
+                                  height: _size.height * 0.09,
                                   margin:
                                       const EdgeInsets.symmetric(horizontal: 5),
                                   decoration: BoxDecoration(
@@ -126,7 +132,6 @@ class ItemDetailPageView extends StatelessWidget {
                                       data.percentage,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        // color: Color(0xffe0e0e0),
                                         fontSize: 16.0,
                                       ),
                                     ),
@@ -136,6 +141,27 @@ class ItemDetailPageView extends StatelessWidget {
                             ),
                           );
                         },
+                      ),
+                    ),
+                    const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
+                      child: Text(
+                        "Details",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Text(
+                        viewModel.description,
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ],
