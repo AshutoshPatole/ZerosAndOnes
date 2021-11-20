@@ -3,7 +3,6 @@ import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:stacked/stacked.dart';
 import 'login_page_view_model.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class LoginPageView extends StatefulWidget {
   const LoginPageView({Key? key}) : super(key: key);
