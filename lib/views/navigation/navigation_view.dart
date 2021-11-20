@@ -13,7 +13,7 @@ class NavigationView extends StatelessWidget {
     return ViewModelBuilder<NavigationViewModel>.reactive(
       onModelReady: (model) {
         model.drawerIndex = DrawerIndex.home;
-        model.screenView = const HomePageView();
+        model.screenView = HomePageView();
       },
       builder: (BuildContext context, NavigationViewModel viewModel, _) {
         return Scaffold(

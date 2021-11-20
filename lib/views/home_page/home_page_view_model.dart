@@ -103,7 +103,6 @@ class HomePageViewModel extends BaseViewModel {
   Stream<List<Item>> getData() {
     final stream = _database.collection("items").snapshots();
     return stream.map((event) => event.docs.map((doc) {
-          print(doc.data());
           return Item.fromJson(doc.data());
         }).toList());
   }

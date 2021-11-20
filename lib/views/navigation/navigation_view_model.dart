@@ -19,7 +19,7 @@ class NavigationViewModel extends BaseViewModel {
     if (drawerIndex != drawerIndexdata) {
       drawerIndex = drawerIndexdata;
       if (drawerIndex == DrawerIndex.home) {
-        screenView = const HomePageView();
+        screenView = HomePageView();
       } else if (drawerIndex == DrawerIndex.feedback) {
         screenView = const FeedbackPageView();
       } else {

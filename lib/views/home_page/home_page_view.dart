@@ -13,14 +13,15 @@ import 'package:zerosandones/widgets/smart_widgets/home_header.dart';
 import 'home_page_view_model.dart';
 
 class HomePageView extends StatelessWidget {
-  const HomePageView({Key? key}) : super(key: key);
+  HomePageView({Key? key}) : super(key: key);
 
+  late Stream<List<Item>> _stream;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return ViewModelBuilder<HomePageViewModel>.reactive(
       onModelReady: (model) {
-        model.getData();
+        _stream = model.getData();
         model.startLocation();
         model.getAddress();
       },
@@ -66,7 +67,7 @@ class HomePageView extends StatelessWidget {
                                     ),
                                   ),
                                   StreamBuilder(
-                                    stream: viewModel.getData(),
+                                    stream: _stream,
                                     builder: (context,
                                         AsyncSnapshot<List<Item>> snapshot) {
                                       return SliverGrid(
