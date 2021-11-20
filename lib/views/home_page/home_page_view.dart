@@ -67,40 +67,39 @@ class HomePageView extends StatelessWidget {
                                     delegate: SliverChildBuilderDelegate(
                                       (context, index) {
                                         final data = mockFood[index];
-                                        return Container(
-                                          height: size.height * 0.2,
-                                          margin: const EdgeInsets.all(8),
-                                          padding: const EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                            color: AppTheme.primaryColor,
-                                            borderRadius:
-                                                BorderRadius.circular(20.0),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: AppTheme.primaryColor
-                                                    .withOpacity(0.75),
-                                                spreadRadius: 1,
-                                                blurRadius: 5,
-                                                offset: const Offset(2, 4.5),
-                                              )
-                                            ],
-                                          ),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              viewModel.setFoodHolderProps(
-                                                foodImagePath: data.imageLink,
-                                                foodName: data.name,
-                                                foodTag:
-                                                    '${data.imageLink}-$index,',
-                                                foodPrice: data.price,
-                                                foodRating: data.ratings,
-                                                ingredients: data.ingredients,
-                                                description: data.description,
-                                              );
+                                        return GestureDetector(
+                                          onTap: () {
+                                            viewModel.setFoodHolderProps(
+                                              foodImagePath: data.imageLink,
+                                              foodName: data.name,
+                                              foodTag:
+                                                  '${data.imageLink}-$index,',
+                                              foodPrice: data.price,
+                                              foodRating: data.ratings,
+                                              ingredients: data.ingredients,
+                                              description: data.description,
+                                            );
 
-                                              viewModel
-                                                  .navigateItemDetailPage();
-                                            },
+                                            viewModel.navigateItemDetailPage();
+                                          },
+                                          child: Container(
+                                            height: size.height * 0.2,
+                                            margin: const EdgeInsets.all(8),
+                                            padding: const EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                              color: AppTheme.primaryColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: AppTheme.primaryColor
+                                                      .withOpacity(0.75),
+                                                  spreadRadius: 1,
+                                                  blurRadius: 5,
+                                                  offset: const Offset(2, 4.5),
+                                                )
+                                              ],
+                                            ),
                                             child: Stack(
                                               clipBehavior: Clip.none,
                                               children: [
