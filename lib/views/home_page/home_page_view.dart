@@ -93,7 +93,10 @@ class HomePageView extends StatelessWidget {
                                                   foodTag:
                                                       '${data.imageLink}-$index,',
                                                   foodPrice: data.price,
-                                                  foodRating: data.ratings);
+                                                  foodRating: data.ratings,
+                                                  ingredients:
+                                                      data.ingredients);
+
                                               viewModel
                                                   .navigateItemDetailPage();
                                             },

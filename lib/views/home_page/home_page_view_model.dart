@@ -8,6 +8,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
+import 'package:zerosandones/core/models/mock_ingredients.dart';
 import 'package:zerosandones/core/models/user_location.dart';
 import 'package:zerosandones/core/services/food_details_holder.dart';
 import 'package:zerosandones/views/item_detail_page/item_detail_page_view.dart';
@@ -85,9 +86,10 @@ class HomePageViewModel extends BaseViewModel {
       required String foodImagePath,
       required String foodName,
       required String foodPrice,
-      required String foodRating}) {
+      required String foodRating,
+      required List<Ingredients> ingredients}) {
     foodDetailHolder.setAllProperties(
-        foodTag, foodImagePath, foodName, foodPrice, foodRating);
+        foodTag, foodImagePath, foodName, foodPrice, foodRating, ingredients);
   }
 
   navigateItemDetailPage() async {
