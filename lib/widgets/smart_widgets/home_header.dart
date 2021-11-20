@@ -14,7 +14,23 @@ class HomeHeader extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 60,
-      color: Colors.transparent,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.blueGrey.withOpacity(0.75),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(3, 3),
+          ),
+          const BoxShadow(
+            color: AppTheme.white,
+            spreadRadius: 0,
+            blurRadius: 0,
+            offset: Offset(0, 0),
+          )
+        ],
+      ),
       child: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

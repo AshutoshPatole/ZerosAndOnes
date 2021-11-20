@@ -36,7 +36,7 @@ class HomePageView extends StatelessWidget {
                           Expanded(
                             child: Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 12),
+                                  const EdgeInsets.symmetric(horizontal: 15),
                               child: CustomScrollView(
                                 physics: const BouncingScrollPhysics(),
                                 slivers: [

@@ -22,7 +22,7 @@ class Coupon extends StatelessWidget {
                 color: AppTheme.primaryColor.withOpacity(0.75),
                 spreadRadius: 0,
                 blurRadius: 5,
-                offset: const Offset(2, 4),
+                offset: const Offset(0, 2),
               )
             ],
           ),
