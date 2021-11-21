@@ -1,5 +1,5 @@
 import 'package:stacked/stacked.dart';
-import 'package:zerosandones/core/models/item.dart';
+import '../models/item.dart';
 
 class FoodDetailHolder extends BaseViewModel {
   late String _foodTag;

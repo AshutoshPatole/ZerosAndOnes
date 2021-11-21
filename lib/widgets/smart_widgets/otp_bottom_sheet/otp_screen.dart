@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 
 import 'package:stacked_services/stacked_services.dart';
-import 'package:zerosandones/theme/app_theme.dart';
-import 'package:zerosandones/widgets/smart_widgets/otp_bottom_sheet/otp_view_model.dart';
+import '../../../theme/app_theme.dart';
+import 'otp_view_model.dart';
 
 class FloatingOTPSheet extends StatelessWidget {
   final SheetRequest request;

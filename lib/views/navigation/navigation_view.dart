@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:zerosandones/core/constants/drawer_enum.dart';
-import 'package:zerosandones/views/drawer_page/drawer_page_view.dart';
-import 'package:zerosandones/views/home_page/home_page_view.dart';
+import '../../core/constants/drawer_enum.dart';
+import '../drawer_page/drawer_page_view.dart';
+import '../home_page/home_page_view.dart';
 import 'navigation_view_model.dart';
 
 class NavigationView extends StatelessWidget {

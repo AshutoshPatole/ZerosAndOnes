@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:zerosandones/theme/app_theme.dart';
+import '../../theme/app_theme.dart';
 
 class FloatingBoxBottomSheet extends StatelessWidget {
   final SheetRequest request;

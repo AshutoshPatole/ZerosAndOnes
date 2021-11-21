@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
-import 'package:zerosandones/core/constants/drawer_enum.dart';
-import 'package:zerosandones/core/logger.dart';
-import 'package:zerosandones/views/feedback_page/feedback_page_view.dart';
-import 'package:zerosandones/views/home_page/home_page_view.dart';
+import '../../core/constants/drawer_enum.dart';
+import '../../core/logger.dart';
+import '../feedback_page/feedback_page_view.dart';
+import '../home_page/home_page_view.dart';
 
 class NavigationViewModel extends BaseViewModel {
   late Logger log;

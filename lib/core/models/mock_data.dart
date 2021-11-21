@@ -1,4 +1,4 @@
-import 'package:zerosandones/core/models/mock_ingredients.dart';
+import 'mock_ingredients.dart';
 
 class Food {
   final String name;

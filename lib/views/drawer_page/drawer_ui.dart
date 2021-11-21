@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:zerosandones/core/constants/drawer_enum.dart';
-import 'package:zerosandones/theme/app_theme.dart';
-import 'package:zerosandones/views/drawer_page/drawer_page_view_model.dart';
+import '../../core/constants/drawer_enum.dart';
+import '../../theme/app_theme.dart';
+import 'drawer_page_view_model.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer(

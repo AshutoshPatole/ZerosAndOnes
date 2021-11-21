@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:zerosandones/theme/app_theme.dart';
-import 'package:zerosandones/widgets/smart_widgets/view_models/navigation.dart';
+import '../../theme/app_theme.dart';
+import 'view_models/navigation.dart';
 
 class HomeHeader extends StatelessWidget {
   HomeHeader({Key? key, required this.address}) : super(key: key);

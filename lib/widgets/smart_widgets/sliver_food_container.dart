@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:zerosandones/core/models/item.dart';
-import 'package:zerosandones/theme/app_theme.dart';
-import 'package:zerosandones/views/home_page/home_page_view_model.dart';
+import '../../core/models/item.dart';
+import '../../theme/app_theme.dart';
+import '../../views/home_page/home_page_view_model.dart';
 
 class SliverFoodContainers extends StatelessWidget {
   final AsyncSnapshot<List<Item>> snapshot;

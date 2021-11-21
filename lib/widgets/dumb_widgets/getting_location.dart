@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zerosandones/theme/app_theme.dart';
+import '../../theme/app_theme.dart';
 
 class GetLocationCircularProgressIndicator extends StatelessWidget {
   const GetLocationCircularProgressIndicator({Key? key}) : super(key: key);

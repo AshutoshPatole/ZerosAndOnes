@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:zerosandones/theme/app_theme.dart';
+import '../../theme/app_theme.dart';
 import 'item_detail_page_view_model.dart';
 
 class ItemDetailPageView extends StatelessWidget {

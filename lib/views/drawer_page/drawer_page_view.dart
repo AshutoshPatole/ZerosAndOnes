@@ -2,7 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:zerosandones/core/constants/drawer_enum.dart';
+
+import '../../core/constants/drawer_enum.dart';
 import 'drawer_page_view_model.dart';
 import 'drawer_ui.dart';
 

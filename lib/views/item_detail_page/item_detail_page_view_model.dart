@@ -1,10 +1,10 @@
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
-import 'package:zerosandones/core/locator.dart';
-import 'package:zerosandones/core/logger.dart';
-import 'package:zerosandones/core/models/item.dart';
-import 'package:zerosandones/core/services/firebase/add_user_service.dart';
-import 'package:zerosandones/core/services/food_details_holder.dart';
+import '../../core/locator.dart';
+import '../../core/logger.dart';
+import '../../core/models/item.dart';
+import '../../core/services/firebase/add_user_service.dart';
+import '../../core/services/food_details_holder.dart';
 
 class ItemDetailPageViewModel extends BaseViewModel {
   late Logger log;

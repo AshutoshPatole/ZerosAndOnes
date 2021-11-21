@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
 import 'cart_page_view_model.dart';
 
 class CartPageView extends StatelessWidget {

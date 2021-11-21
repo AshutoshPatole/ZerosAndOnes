@@ -3,11 +3,11 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:zerosandones/core/locator.dart';
-import 'package:zerosandones/core/logger.dart';
+import '../../core/locator.dart';
+import '../../core/logger.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:zerosandones/views/drawer_page/drawer_page_view.dart';
-import 'package:zerosandones/views/navigation/navigation_view.dart';
+import '../drawer_page/drawer_page_view.dart';
+import '../navigation/navigation_view.dart';
 
 class LoginPageViewModel extends BaseViewModel {
   late Logger log;

@@ -1,16 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:zerosandones/core/models/item.dart';
-import 'package:zerosandones/core/models/mock_data.dart';
-import 'package:zerosandones/core/models/user_location.dart';
-import 'package:zerosandones/theme/app_theme.dart';
-import 'package:zerosandones/widgets/dumb_widgets/getting_location.dart';
-import 'package:zerosandones/widgets/dumb_widgets/not_serviceable_location.dart';
-import 'package:zerosandones/widgets/dumb_widgets/sliver_sized_box.dart';
-import 'package:zerosandones/widgets/smart_widgets/coupon.dart';
-import 'package:zerosandones/widgets/smart_widgets/home_header.dart';
-import 'package:zerosandones/widgets/smart_widgets/sliver_food_container.dart';
+import '../../core/models/item.dart';
+import '../../core/models/user_location.dart';
+import '../../theme/app_theme.dart';
+import '../../widgets/dumb_widgets/getting_location.dart';
+import '../../widgets/dumb_widgets/not_serviceable_location.dart';
+import '../../widgets/dumb_widgets/sliver_sized_box.dart';
+import '../../widgets/smart_widgets/coupon.dart';
+import '../../widgets/smart_widgets/home_header.dart';
+import '../../widgets/smart_widgets/sliver_food_container.dart';
 import 'home_page_view_model.dart';
 
 class HomePageView extends StatelessWidget {

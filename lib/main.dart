@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:zerosandones/theme/ui/bottom_sheets.dart';
+import 'theme/ui/bottom_sheets.dart';
 
 import 'core/locator.dart';
 import 'core/router_constants.dart';

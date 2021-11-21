@@ -5,9 +5,9 @@ import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:zerosandones/core/constants/bottom_sheet_enum.dart';
-import 'package:zerosandones/core/locator.dart';
-import 'package:zerosandones/core/logger.dart';
+import '../../core/constants/bottom_sheet_enum.dart';
+import '../../core/locator.dart';
+import '../../core/logger.dart';
 
 class PhoneAuthPageViewModel extends BaseViewModel {
   late Logger log;
