@@ -107,6 +107,7 @@ class HomePageView extends StatelessWidget {
                                                         data.ingredients,
                                                     description:
                                                         data.description,
+                                                    foodId: data.id,
                                                   );
                                                   viewModel
                                                       .navigateItemDetailPage();

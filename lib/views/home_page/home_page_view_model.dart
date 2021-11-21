@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geocoding/geocoding.dart' as loc;
 import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
@@ -10,7 +9,6 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/logger.dart';
 import 'package:zerosandones/core/models/item.dart';
-// import 'package:zerosandones/core/models/mock_ingredients.dart';
 import 'package:zerosandones/core/models/user_location.dart';
 import 'package:zerosandones/core/services/firebase/add_user_service.dart';
 import 'package:zerosandones/core/services/food_details_holder.dart';
@@ -28,7 +26,6 @@ class HomePageViewModel extends BaseViewModel {
   final userService = locator<UserService>();
 
   final FirebaseFirestore _database = FirebaseFirestore.instance;
-  final _auth = FirebaseAuth.instance;
 
   late UserLocation _currentLocation;
   var location = Location();
@@ -88,21 +85,33 @@ class HomePageViewModel extends BaseViewModel {
     address += "${place.locality}";
   }
 
-  setFoodHolderProps(
-      {required String foodTag,
-      required String foodImagePath,
-      required String foodName,
-      required String foodPrice,
-      required String foodRating,
-      required List<Ingredient> ingredients,
-      required String description}) {
-    foodDetailHolder.setAllProperties(foodTag, foodImagePath, foodName,
-        foodPrice, foodRating, ingredients, description);
+  setFoodHolderProps({
+    required String foodTag,
+    required String foodImagePath,
+    required String foodName,
+    required String foodPrice,
+    required String foodRating,
+    required List<Ingredient> ingredients,
+    required String description,
+    required String foodId,
+  }) {
+    foodDetailHolder.setAllProperties(
+      foodId: foodId,
+      description: description,
+      foodImagePath: foodImagePath,
+      foodName: foodName,
+      foodPrice: foodPrice,
+      foodRating: foodRating,
+      foodTag: foodTag,
+      ingredients: ingredients,
+    );
   }
 
   Stream<List<Item>> getData() {
+    log.w("GetData called");
     final stream = _database.collection("items").snapshots();
     return stream.map((event) => event.docs.map((doc) {
+          log.i(doc.reference.id);
           return Item.fromJson(doc.data());
         }).toList());
   }

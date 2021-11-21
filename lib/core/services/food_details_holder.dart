@@ -9,6 +9,7 @@ class FoodDetailHolder extends BaseViewModel {
   late String _foodRating;
   late List<Ingredient> _ingredients;
   late String _description;
+  late String _foodId;
 
   String get foodTag => _foodTag;
   String get foodImagePath => _foodImagePath;
@@ -17,15 +18,18 @@ class FoodDetailHolder extends BaseViewModel {
   String get foodRating => _foodRating;
   List<Ingredient> get ingredients => _ingredients;
   String get description => _description;
+  String get foodId => _foodId;
 
-  setAllProperties(
-      String foodTag,
-      String foodImagePath,
-      String foodName,
-      String foodPrice,
-      String foodRating,
-      List<Ingredient> ingredients,
-      String description) {
+  setAllProperties({
+    required String foodTag,
+    required String foodImagePath,
+    required String foodName,
+    required String foodPrice,
+    required String foodRating,
+    required List<Ingredient> ingredients,
+    required String description,
+    required String foodId,
+  }) {
     _foodImagePath = foodImagePath;
     _foodTag = foodTag;
     _foodName = foodName;
@@ -33,6 +37,7 @@ class FoodDetailHolder extends BaseViewModel {
     _foodRating = foodRating;
     _ingredients = ingredients;
     _description = description;
+    _foodId = foodId;
     notifyListeners();
   }
 }

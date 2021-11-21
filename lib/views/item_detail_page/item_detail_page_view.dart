@@ -192,8 +192,8 @@ class ItemDetailPageView extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             viewModel.userService.addItemToCart(
-                              itemId: "abcdef",
-                              itemPhoto: "abcdef_photo",
+                              itemId: viewModel.foodId,
+                              itemPhoto: viewModel.foodImagePath,
                               price: viewModel.foodPrice,
                               quantity: "1",
                             );

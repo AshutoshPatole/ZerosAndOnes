@@ -1,8 +1,3 @@
-// To parse this JSON data, do
-//
-//     final item = itemFromJson(jsonString);
-
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 List<Item> itemFromJson(String str) =>
@@ -18,6 +13,7 @@ class Item {
     required this.rating,
     required this.photo,
     required this.description,
+    required this.id,
     required this.ingredients,
   });
 
@@ -26,6 +22,7 @@ class Item {
   final double rating;
   final String photo;
   final String description;
+  final String id;
   final List<Ingredient> ingredients;
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
@@ -34,6 +31,7 @@ class Item {
         rating: json["rating"].toDouble(),
         photo: json["photo"],
         description: json["description"],
+        id: json["id"],
         ingredients: List<Ingredient>.from(
             json["ingredients"].map((x) => Ingredient.fromJson(x))),
       );
