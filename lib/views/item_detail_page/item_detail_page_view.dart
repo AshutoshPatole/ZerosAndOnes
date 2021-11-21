@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
 import 'package:stacked/stacked.dart';
 import '../../theme/app_theme.dart';
 import 'item_detail_page_view_model.dart';
@@ -195,13 +197,39 @@ class ItemDetailPageView extends StatelessWidget {
                               color: Colors.white),
                         ),
                         GestureDetector(
-                          onTap: () {
-                            viewModel.userService.addItemToCart(
-                              itemId: viewModel.foodId,
-                              itemPhoto: viewModel.foodImagePath,
-                              price: viewModel.foodPrice,
-                              quantity: "1",
-                            );
+                          onTap: () async {
+                            bool? result = await viewModel.userService
+                                .addItemToCart(
+                                    itemId: viewModel.foodId,
+                                    itemPhoto: viewModel.foodImagePath,
+                                    price: viewModel.foodPrice,
+                                    quantity: "1",
+                                    context: context);
+                            if (result == true) {
+                              // ! TODO : Fix E/flutter (14427): Typically, the Scaffold widget is introduced by the MaterialApp or WidgetsApp widget at the top of your application widget tree.
+
+                              MotionToast.success(
+                                title: "👍",
+                                titleStyle: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                                description: "Item Added",
+                                descriptionStyle: const TextStyle(fontSize: 12),
+                                layoutOrientation: ORIENTATION.RTL,
+                                animationType: ANIMATION.FROM_RIGHT,
+                                width: 300,
+                              ).show(context);
+                            } else {
+                              MotionToast.error(
+                                iconType: ICON_TYPE.CUPERTINO,
+                                titleStyle: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                                description: "Item Added",
+                                descriptionStyle: const TextStyle(fontSize: 12),
+                                layoutOrientation: ORIENTATION.RTL,
+                                animationType: ANIMATION.FROM_RIGHT,
+                                width: 300,
+                              ).show(context);
+                            }
                           },
                           child: Container(
                             width: _size.width * 0.4,

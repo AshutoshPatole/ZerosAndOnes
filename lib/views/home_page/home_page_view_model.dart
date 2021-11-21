@@ -10,7 +10,7 @@ import '../../core/locator.dart';
 import '../../core/logger.dart';
 import '../../core/models/item.dart';
 import '../../core/models/user_location.dart';
-import '../../core/services/firebase/add_user_service.dart';
+import '../../core/services/firebase/user_services.dart';
 import '../../core/services/food_details_holder.dart';
 import '../item_detail_page/item_detail_page_view.dart';
 

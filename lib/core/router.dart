@@ -20,23 +20,27 @@ class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case loginPageViewRoute:
-        return MaterialPageRoute(builder: (_) => view0.LoginPageView());
+        return MaterialPageRoute(builder: (_) => const view0.LoginPageView());
       case drawerPageViewRoute:
-        return MaterialPageRoute(builder: (_) => view1.DrawerPageView());
+        return MaterialPageRoute(builder: (_) => const view1.DrawerPageView());
       case navigationViewRoute:
-        return MaterialPageRoute(builder: (_) => view2.NavigationView());
+        return MaterialPageRoute(builder: (_) => const view2.NavigationView());
       case homePageViewRoute:
         return MaterialPageRoute(builder: (_) => view3.HomePageView());
       case feedbackPageViewRoute:
-        return MaterialPageRoute(builder: (_) => view4.FeedbackPageView());
+        return MaterialPageRoute(
+            builder: (_) => const view4.FeedbackPageView());
       case itemDetailPageViewRoute:
-        return MaterialPageRoute(builder: (_) => view5.ItemDetailPageView());
+        return MaterialPageRoute(
+            builder: (_) => const view5.ItemDetailPageView());
       case cartPageViewRoute:
-        return MaterialPageRoute(builder: (_) => view6.CartPageView());
+        return MaterialPageRoute(builder: (_) => const view6.CartPageView());
       case phoneAuthPageViewRoute:
-        return MaterialPageRoute(builder: (_) => view7.PhoneAuthPageView());
+        return MaterialPageRoute(
+            builder: (_) => const view7.PhoneAuthPageView());
       case editProfilePageViewRoute:
-        return MaterialPageRoute(builder: (_) => view8.EditProfilePageView());
+        return MaterialPageRoute(
+            builder: (_) => const view8.EditProfilePageView());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

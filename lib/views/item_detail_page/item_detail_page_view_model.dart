@@ -4,7 +4,7 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../core/locator.dart';
 import '../../core/logger.dart';
 import '../../core/models/item.dart';
-import '../../core/services/firebase/add_user_service.dart';
+import '../../core/services/firebase/user_services.dart';
 import '../../core/services/food_details_holder.dart';
 
 class ItemDetailPageViewModel extends BaseViewModel {

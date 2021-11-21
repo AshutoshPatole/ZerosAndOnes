@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
 
 class UserService {
   FirebaseFirestore database = FirebaseFirestore.instance;
@@ -17,12 +18,12 @@ class UserService {
     // );
   }
 
-  addItemToCart({
-    required String itemId,
-    required String price,
-    required String itemPhoto,
-    required String quantity,
-  }) async {
+  Future<bool?> addItemToCart(
+      {required String itemId,
+      required String price,
+      required String itemPhoto,
+      required String quantity,
+      required BuildContext context}) async {
     if (_user?.uid != null) {
       CollectionReference collectionReference =
           database.collection("users").doc(_user?.uid).collection("cart");
@@ -33,16 +34,15 @@ class UserService {
         "itemPhoto": itemPhoto,
         "quantity": quantity,
         "id": docId,
+      }).then(
+        (value) {
+          return true;
+        },
+      ).onError((error, stackTrace) {
+        return false;
       });
     } else {
-      Fluttertoast.showToast(
-        msg: "You need to sign in first.",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: Colors.red.shade600,
-        textColor: Colors.white,
-        fontSize: 16.0,
-      );
+      return false;
     }
   }
 }
