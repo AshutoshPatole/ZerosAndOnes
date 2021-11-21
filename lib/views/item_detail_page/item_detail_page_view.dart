@@ -25,9 +25,14 @@ class ItemDetailPageView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Icon(CupertinoIcons.arrow_left),
-                        Icon(CupertinoIcons.heart),
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            viewModel.navigateBack();
+                          },
+                          icon: const Icon(CupertinoIcons.arrow_left),
+                        ),
+                        const Icon(CupertinoIcons.heart),
                       ],
                     ),
                   ),
