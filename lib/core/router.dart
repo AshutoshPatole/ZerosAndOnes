@@ -33,7 +33,7 @@ class Router {
       case itemDetailPageViewRoute:
         return MaterialPageRoute(builder: (_) => view5.ItemDetailPageView());
       case cartPageViewRoute:
-        return MaterialPageRoute(builder: (_) => const view6.CartPageView());
+        return MaterialPageRoute(builder: (_) => view6.CartPageView());
       case phoneAuthPageViewRoute:
         return MaterialPageRoute(
             builder: (_) => const view7.PhoneAuthPageView());

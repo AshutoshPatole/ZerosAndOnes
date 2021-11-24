@@ -14,7 +14,7 @@ import 'home_page_view_model.dart';
 class HomePageView extends StatelessWidget {
   HomePageView({Key? key}) : super(key: key);
 
-  late Stream<List<Item>> _stream;
+  Stream<List<Item>>? _stream;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
