@@ -209,6 +209,7 @@ class ItemDetailPageView extends StatelessWidget {
                                     price: viewModel.foodPrice,
                                     quantity: "1",
                                     context: context);
+                            print(result);
                             if (result == true) {
                               // ! TODO : Fix E/flutter (14427): Typically, the Scaffold widget is introduced by the MaterialApp or WidgetsApp widget at the top of your application widget tree.
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -229,7 +230,7 @@ class ItemDetailPageView extends StatelessWidget {
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                      content: Text("Could not add")));
+                                      content: Text("You need to sign In")));
                               // _displayWarningMotionToast(context);
                               // Builder(
                               //   builder: (BuildContext context) {
