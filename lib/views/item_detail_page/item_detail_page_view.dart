@@ -208,7 +208,7 @@ class ItemDetailPageView extends StatelessWidget {
                                     itemPhoto: viewModel.foodImagePath,
                                     price: viewModel.foodPrice,
                                     quantity: "1",
-                                    context: context);
+                                    itemName: viewModel.foodName);
                             print(result);
                             if (result == true) {
                               // ! TODO : Fix E/flutter (14427): Typically, the Scaffold widget is introduced by the MaterialApp or WidgetsApp widget at the top of your application widget tree.

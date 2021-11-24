@@ -24,7 +24,7 @@ class UserService {
       required String price,
       required String itemPhoto,
       required String quantity,
-      required BuildContext context}) async {
+      required String itemName}) async {
     try {
       if (_auth.currentUser?.uid != null) {
         CollectionReference collectionReference = database
@@ -38,6 +38,7 @@ class UserService {
           "itemPhoto": itemPhoto,
           "quantity": quantity,
           "id": docId,
+          "itemName": itemName,
         });
         return true;
       } else {
