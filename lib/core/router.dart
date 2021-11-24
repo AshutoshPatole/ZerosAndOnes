@@ -31,8 +31,7 @@ class Router {
         return MaterialPageRoute(
             builder: (_) => const view4.FeedbackPageView());
       case itemDetailPageViewRoute:
-        return MaterialPageRoute(
-            builder: (_) => const view5.ItemDetailPageView());
+        return MaterialPageRoute(builder: (_) => view5.ItemDetailPageView());
       case cartPageViewRoute:
         return MaterialPageRoute(builder: (_) => const view6.CartPageView());
       case phoneAuthPageViewRoute:

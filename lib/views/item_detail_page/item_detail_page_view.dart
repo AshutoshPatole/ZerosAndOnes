@@ -3,18 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 import '../../theme/app_theme.dart';
 import 'item_detail_page_view_model.dart';
 
 class ItemDetailPageView extends StatelessWidget {
   const ItemDetailPageView({Key? key}) : super(key: key);
+  // final _scaffoldState = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
+
     return ViewModelBuilder<ItemDetailPageViewModel>.reactive(
       builder: (BuildContext context, ItemDetailPageViewModel viewModel, _) {
         return Scaffold(
+          // key: _scaffoldState,
           body: SafeArea(
             child: SingleChildScrollView(
               child: Column(
@@ -207,28 +211,41 @@ class ItemDetailPageView extends StatelessWidget {
                                     context: context);
                             if (result == true) {
                               // ! TODO : Fix E/flutter (14427): Typically, the Scaffold widget is introduced by the MaterialApp or WidgetsApp widget at the top of your application widget tree.
-
-                              MotionToast.success(
-                                title: "👍",
-                                titleStyle: const TextStyle(
-                                    fontWeight: FontWeight.bold),
-                                description: "Item Added",
-                                descriptionStyle: const TextStyle(fontSize: 12),
-                                layoutOrientation: ORIENTATION.RTL,
-                                animationType: ANIMATION.FROM_RIGHT,
-                                width: 300,
-                              ).show(context);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text("Added")));
+                              // Builder(builder: (BuildContext context) {
+                              //   return MotionToast.success(
+                              //     title: "👍",
+                              //     titleStyle: const TextStyle(
+                              //         fontWeight: FontWeight.bold),
+                              //     description: "Item Added",
+                              //     descriptionStyle:
+                              //         const TextStyle(fontSize: 12),
+                              //     layoutOrientation: ORIENTATION.RTL,
+                              //     animationType: ANIMATION.FROM_RIGHT,
+                              //     width: 300,
+                              //   ).show(context);
+                              // });
                             } else {
-                              MotionToast.error(
-                                iconType: ICON_TYPE.CUPERTINO,
-                                titleStyle: const TextStyle(
-                                    fontWeight: FontWeight.bold),
-                                description: "Item Added",
-                                descriptionStyle: const TextStyle(fontSize: 12),
-                                layoutOrientation: ORIENTATION.RTL,
-                                animationType: ANIMATION.FROM_RIGHT,
-                                width: 300,
-                              ).show(context);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text("Could not add")));
+                              // _displayWarningMotionToast(context);
+                              // Builder(
+                              //   builder: (BuildContext context) {
+                              //     return MotionToast.error(
+                              //       iconType: ICON_TYPE.CUPERTINO,
+                              //       titleStyle: const TextStyle(
+                              //           fontWeight: FontWeight.bold),
+                              //       description: "Item not added",
+                              //       descriptionStyle:
+                              //           const TextStyle(fontSize: 12),
+                              //       layoutOrientation: ORIENTATION.RTL,
+                              //       animationType: ANIMATION.FROM_RIGHT,
+                              //       width: 300,
+                              //     ).show(context);
+                              //   },
+                              // );
                             }
                           },
                           child: Container(
@@ -254,5 +271,16 @@ class ItemDetailPageView extends StatelessWidget {
       },
       viewModelBuilder: () => ItemDetailPageViewModel(),
     );
+  }
+
+  _displayWarningMotionToast(BuildContext context) {
+    MotionToast.warning(
+      title: "Warning Motion Toast",
+      titleStyle: TextStyle(fontWeight: FontWeight.bold),
+      description: "This is a Warning",
+      animationCurve: Curves.bounceIn,
+      borderRadius: 0,
+      animationDuration: Duration(milliseconds: 1000),
+    ).show(context);
   }
 }
