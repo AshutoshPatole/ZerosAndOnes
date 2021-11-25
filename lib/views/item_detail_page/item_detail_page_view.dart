@@ -207,7 +207,7 @@ class ItemDetailPageView extends StatelessWidget {
                                     itemId: viewModel.foodId,
                                     itemPhoto: viewModel.foodImagePath,
                                     price: viewModel.foodPrice,
-                                    quantity: "1",
+                                    quantity: 1,
                                     itemName: viewModel.foodName);
                             print(result);
                             if (result == true) {

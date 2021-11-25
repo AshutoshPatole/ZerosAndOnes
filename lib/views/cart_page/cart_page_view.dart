@@ -123,17 +123,26 @@ class CartPageView extends StatelessWidget {
                                       Column(
                                         children: [
                                           IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              viewModel.incOrDec(
+                                                itemId: data.itemId,
+                                                increment: false,
+                                              );
+                                            },
                                             icon: const Icon(
                                               Icons.remove_circle_outline,
                                               color: Colors.grey,
                                             ),
                                           ),
                                           Text(
-                                            data.quantity,
+                                            data.quantity.toString(),
                                           ),
                                           IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              viewModel.incOrDec(
+                                                itemId: data.itemId,
+                                              );
+                                            },
                                             icon: const Icon(
                                               Icons.add_circle_outline,
                                               color: AppTheme.primaryColor,

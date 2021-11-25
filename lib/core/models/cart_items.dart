@@ -20,7 +20,7 @@ class CartItem {
   final String itemId;
   final String itemPhoto;
   final String price;
-  final String quantity;
+  final int quantity;
   final String itemName;
 
   factory CartItem.fromJson(Map<String, dynamic> json) => CartItem(
