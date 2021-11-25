@@ -26,20 +26,26 @@ class UserService {
       required String itemName}) async {
     try {
       if (_auth.currentUser?.uid != null) {
-        CollectionReference addRef = database
-            .collection("users")
-            .doc(_auth.currentUser?.uid)
-            .collection("cart");
-        String docId = addRef.doc().id;
-        await addRef.doc(docId).set({
-          "itemId": itemId,
-          "price": price,
-          "itemPhoto": itemPhoto,
-          "quantity": quantity,
-          "id": docId,
-          "itemName": itemName,
-        });
-        return true;
+        bool exists = await checkIfItemIsPresentInCart(itemId: itemId);
+        if (exists) {
+          bool updated = await itemQuantity(itemId: itemId, increment: true);
+          return updated;
+        } else {
+          CollectionReference addRef = database
+              .collection("users")
+              .doc(_auth.currentUser?.uid)
+              .collection("cart");
+          String docId = addRef.doc().id;
+          await addRef.doc(docId).set({
+            "itemId": itemId,
+            "price": price,
+            "itemPhoto": itemPhoto,
+            "quantity": quantity,
+            "id": docId,
+            "itemName": itemName,
+          });
+          return true;
+        }
       } else {
         log.e("could not add product $itemId - $price");
         return false;
@@ -50,7 +56,8 @@ class UserService {
     }
   }
 
-  Future itemQuantity({required String itemId, required bool increment}) async {
+  Future<bool> itemQuantity(
+      {required String itemId, required bool increment}) async {
     var existsDoc = await database
         .collection("users/${_auth.currentUser?.uid}/cart")
         .where(
@@ -68,11 +75,30 @@ class UserService {
         await updateRef.doc(docId).update({
           'quantity': FieldValue.increment(1),
         });
+        return true;
       } else {
         await updateRef.doc(docId).update({
           'quantity': FieldValue.increment(-1),
         });
+        return true;
       }
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> checkIfItemIsPresentInCart({
+    required String itemId,
+  }) async {
+    var doc = await database
+        .collection("users/${_auth.currentUser?.uid}/cart")
+        .where('itemId', isEqualTo: itemId)
+        .limit(1)
+        .get();
+    if (doc.docs[0].exists) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
