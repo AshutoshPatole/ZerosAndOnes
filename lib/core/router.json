@@ -22,11 +22,6 @@
             "view_name": "HomePageView"
         },
         {
-            "file_path": "views/feedback_page/feedback_page_view.dart",
-            "route_name": "feedback_pageViewRoute",
-            "view_name": "FeedbackPageView"
-        },
-        {
             "file_path": "views/item_detail_page/item_detail_page_view.dart",
             "route_name": "item_detail_pageViewRoute",
             "view_name": "ItemDetailPageView"

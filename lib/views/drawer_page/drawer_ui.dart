@@ -38,11 +38,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
         icon: const Icon(CupertinoIcons.home),
       ),
       DrawerList(
-        index: DrawerIndex.feedback,
-        labelName: 'Advice',
-        icon: const Icon(CupertinoIcons.chat_bubble_text),
-      ),
-      DrawerList(
         index: DrawerIndex.invite,
         labelName: 'Invite Friend',
         icon: const Icon(CupertinoIcons.group),

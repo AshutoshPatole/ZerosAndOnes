@@ -91,7 +91,7 @@ class ItemDetailPageView extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final data = viewModel.ingredients[index];
                         return Container(
-                          width: _size.width * 0.24,
+                          width: _size.width * 0.20,
                           height: _size.height * 0.1,
                           margin: const EdgeInsets.symmetric(horizontal: 5),
                           decoration: BoxDecoration(
@@ -137,7 +137,7 @@ class ItemDetailPageView extends StatelessWidget {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    data.percentage,
+                                    "${data.percentage}%",
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16.0,
@@ -209,7 +209,6 @@ class ItemDetailPageView extends StatelessWidget {
                                     price: viewModel.foodPrice,
                                     quantity: 1,
                                     itemName: viewModel.foodName);
-                            print(result);
                             if (result == true) {
                               // ! TODO : Fix E/flutter (14427): Typically, the Scaffold widget is introduced by the MaterialApp or WidgetsApp widget at the top of your application widget tree.
                               ScaffoldMessenger.of(context).showSnackBar(
