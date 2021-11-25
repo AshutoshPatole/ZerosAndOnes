@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:zerosandones/widgets/dumb_widgets/shimmer_home.dart';
 import '../../core/models/item.dart';
 import '../../core/models/user_location.dart';
 import '../../theme/app_theme.dart';
@@ -69,6 +70,9 @@ class HomePageView extends StatelessWidget {
                                     stream: _stream,
                                     builder: (context,
                                         AsyncSnapshot<List<Item>> snapshot) {
+                                      if (!snapshot.hasData) {
+                                        return const ItemShimmer();
+                                      }
                                       return SliverFoodContainers(
                                         snapshot: snapshot,
                                         viewModel: viewModel,

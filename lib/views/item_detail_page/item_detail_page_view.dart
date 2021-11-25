@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:motion_toast/motion_toast.dart';
-import 'package:motion_toast/resources/arrays.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 import '../../theme/app_theme.dart';
 import 'item_detail_page_view_model.dart';
 
@@ -271,16 +268,5 @@ class ItemDetailPageView extends StatelessWidget {
       },
       viewModelBuilder: () => ItemDetailPageViewModel(),
     );
-  }
-
-  _displayWarningMotionToast(BuildContext context) {
-    MotionToast.warning(
-      title: "Warning Motion Toast",
-      titleStyle: TextStyle(fontWeight: FontWeight.bold),
-      description: "This is a Warning",
-      animationCurve: Curves.bounceIn,
-      borderRadius: 0,
-      animationDuration: Duration(milliseconds: 1000),
-    ).show(context);
   }
 }

@@ -27,6 +27,7 @@ dependencies:
   motion_toast: ^1.5.0
   pinput: ^1.2.2
   responsive_builder: ^0.4.1
+  shimmer: ^2.0.0
   stacked: ^2.2.7
   stacked_services: ^0.8.15
 dev_dependencies:
