@@ -15,7 +15,7 @@ class ItemDetailPageViewModel extends BaseViewModel {
   }
   final _foodDetailHolder = locator<FoodDetailHolder>();
   final _navigationService = locator<NavigationService>();
-  final userService = locator<UserService>();
+  final userService = locator<CartService>();
 
   String get foodName => _foodDetailHolder.foodName;
   String get foodImagePath => _foodDetailHolder.foodImagePath;

@@ -3,20 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:zerosandones/core/logger.dart';
 
-class UserService {
+class CartService {
   Logger log = getLogger("UserService");
   FirebaseFirestore database = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
-
-  sampleAddingData() async {
-    // await database.collection("/users").doc(_auth.currentUser?.uid).set(
-    //   {
-    //     "name": _auth.currentUser?.displayName,
-    //     "phoneNumber": _auth.currentUser?.phoneNumber,
-    //     "email": _auth.currentUser?.email,
-    //   },
-    // );
-  }
 
   Future<bool> addItemToCart(
       {required String itemId,
@@ -25,12 +15,16 @@ class UserService {
       required int quantity,
       required String itemName}) async {
     try {
+      // check if user is logged in
       if (_auth.currentUser?.uid != null) {
+        // check if user has the item in cart already.
         bool exists = await checkIfItemIsPresentInCart(itemId: itemId);
         if (exists) {
+          // if the item is present then increment the quantity to +1
           bool updated = await itemQuantity(itemId: itemId, increment: true);
           return updated;
         } else {
+          // if the item is not present then add the item to the users cart.
           CollectionReference addRef = database
               .collection("users")
               .doc(_auth.currentUser?.uid)
@@ -58,25 +52,36 @@ class UserService {
 
   Future<bool> itemQuantity(
       {required String itemId, required bool increment}) async {
+    // fetch the item details if present
     var existsDoc = await database
         .collection("users/${_auth.currentUser?.uid}/cart")
         .where(
           'itemId',
           isEqualTo: itemId,
         )
+        .limit(1)
         .get();
+    // check if it exists
     if (existsDoc.docs[0].exists) {
       var docId = existsDoc.docs[0].reference.id;
       CollectionReference updateRef = database
           .collection("users")
           .doc(_auth.currentUser?.uid)
           .collection("cart");
+
+      // based on increment parameter choose whether to increment or decrement the value
       if (increment) {
         await updateRef.doc(docId).update({
           'quantity': FieldValue.increment(1),
         });
         return true;
       } else {
+        var quan = existsDoc.docs[0].data();
+        var quantity = quan['quantity'];
+        // Assure that the quantity value does not go less than 1.
+        if (quantity <= 1) {
+          return false;
+        }
         await updateRef.doc(docId).update({
           'quantity': FieldValue.increment(-1),
         });

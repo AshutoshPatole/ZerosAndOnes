@@ -17,7 +17,7 @@ class CartPageViewModel extends BaseViewModel {
   }
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   final User? _user = FirebaseAuth.instance.currentUser;
-  final _userService = locator<UserService>();
+  final _userService = locator<CartService>();
   final _navigationService = locator<NavigationService>();
 
   incOrDec({required String itemId, bool increment = true}) {

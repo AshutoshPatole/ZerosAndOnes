@@ -23,7 +23,7 @@ class HomePageViewModel extends BaseViewModel {
 
   final _navigationService = locator<NavigationService>();
   final foodDetailHolder = locator<FoodDetailHolder>();
-  final userService = locator<UserService>();
+  final userService = locator<CartService>();
 
   final FirebaseFirestore _database = FirebaseFirestore.instance;
 
