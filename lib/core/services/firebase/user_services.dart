@@ -19,6 +19,7 @@ class CartService {
       if (_auth.currentUser?.uid != null) {
         // check if user has the item in cart already.
         bool exists = await checkIfItemIsPresentInCart(itemId: itemId);
+
         if (exists) {
           // if the item is present then increment the quantity to +1
           bool updated = await itemQuantity(itemId: itemId, increment: true);
@@ -30,6 +31,7 @@ class CartService {
               .doc(_auth.currentUser?.uid)
               .collection("cart");
           String docId = addRef.doc().id;
+
           await addRef.doc(docId).set({
             "itemId": itemId,
             "price": price,
@@ -62,7 +64,7 @@ class CartService {
         .limit(1)
         .get();
     // check if it exists
-    if (existsDoc.docs[0].exists) {
+    if (existsDoc.docs.isNotEmpty && existsDoc.docs[0].exists) {
       var docId = existsDoc.docs[0].reference.id;
       CollectionReference updateRef = database
           .collection("users")
@@ -100,7 +102,7 @@ class CartService {
         .where('itemId', isEqualTo: itemId)
         .limit(1)
         .get();
-    if (doc.docs[0].exists) {
+    if (doc.docs.isNotEmpty && doc.docs[0].exists) {
       return true;
     } else {
       return false;
