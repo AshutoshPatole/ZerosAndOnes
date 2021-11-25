@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:zerosandones/core/locator.dart';
 import 'package:zerosandones/core/models/cart_items.dart';
 import 'package:zerosandones/core/services/firebase/user_services.dart';
@@ -17,9 +18,14 @@ class CartPageViewModel extends BaseViewModel {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   final User? _user = FirebaseAuth.instance.currentUser;
   final _userService = locator<UserService>();
+  final _navigationService = locator<NavigationService>();
 
   incOrDec({required String itemId, bool increment = true}) {
     _userService.itemQuantity(itemId: itemId, increment: increment);
+  }
+
+  navigateBack() {
+    _navigationService.back();
   }
 
   Stream<List<CartItem>> getCartItems() {

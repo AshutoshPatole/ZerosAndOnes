@@ -28,7 +28,9 @@ class CartPageView extends StatelessWidget {
                 Row(
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          viewModel.navigateBack();
+                        },
                         icon: const Icon(
                           CupertinoIcons.arrow_left,
                         )),
