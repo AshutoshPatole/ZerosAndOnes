@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../core/models/item.dart';
@@ -58,8 +59,12 @@ class SliverFoodContainers extends StatelessWidget {
                       ),
                       Hero(
                         tag: '${data.photo}-$index,',
-                        child: Image.network(
-                          data.photo,
+                        child: CachedNetworkImage(
+                          imageUrl: data.photo,
+                          placeholder: (context, url) =>
+                              const CircularProgressIndicator(
+                            color: Colors.white38,
+                          ),
                         ),
                       ),
                       SizedBox(

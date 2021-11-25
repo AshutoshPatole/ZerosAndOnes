@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../theme/app_theme.dart';
 import 'item_detail_page_view_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ItemDetailPageView extends StatelessWidget {
   const ItemDetailPageView({Key? key}) : super(key: key);
@@ -59,7 +61,8 @@ class ItemDetailPageView extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Hero(
                       tag: viewModel.foodTag,
-                      child: Image.network(viewModel.foodImagePath),
+                      child:
+                          CachedNetworkImage(imageUrl: viewModel.foodImagePath),
                     ),
                   ),
                   SizedBox(
